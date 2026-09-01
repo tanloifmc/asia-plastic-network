@@ -23,7 +23,7 @@ export function HeroSlider({
     return () => window.clearInterval(id);
   }, [slides.length]);
 
-  const slide = slides[active];
+  const slide = slides[active] ?? slides[0]!;
 
   return (
     <section className={`relative overflow-hidden ${height}`}>
