@@ -5,7 +5,7 @@ import { sectors, locations } from "@/lib/companies";
 export function SearchBar({
   initial,
 }: {
-  initial?: { q?: string; sector?: string; location?: string };
+  initial?: { q?: string | undefined; sector?: string | undefined; location?: string | undefined };
 }) {
   const navigate = useNavigate();
   const [q, setQ] = useState(initial?.q ?? "");
