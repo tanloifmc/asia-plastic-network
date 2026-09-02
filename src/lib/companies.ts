@@ -4,6 +4,24 @@ import hero3 from "@/assets/hero-3.jpg";
 import company1 from "@/assets/company-1.jpg";
 import company2 from "@/assets/company-2.jpg";
 import company3 from "@/assets/company-3.jpg";
+import bannerVinhPolymer from "@/assets/banner-vinh-polymer.jpg";
+import bannerKitayama from "@/assets/banner-kitayama.jpg";
+import bannerHanswerk from "@/assets/banner-hanswerk.jpg";
+import bannerRegra from "@/assets/banner-regra.jpg";
+import bannerSeonjin from "@/assets/banner-seonjin.jpg";
+import bannerThermolink from "@/assets/banner-thermolink.jpg";
+import bannerAuxitek from "@/assets/banner-auxitek.jpg";
+import bannerAarav from "@/assets/banner-aarav.jpg";
+import bannerTruongSon from "@/assets/banner-truong-son.jpg";
+import logoVinhPolymer from "@/assets/logo-vinh-polymer.png";
+import logoKitayama from "@/assets/logo-kitayama.png";
+import logoHanswerk from "@/assets/logo-hanswerk.png";
+import logoRegra from "@/assets/logo-regra.png";
+import logoSeonjin from "@/assets/logo-seonjin.png";
+import logoThermolink from "@/assets/logo-thermolink.png";
+import logoAuxitek from "@/assets/logo-auxitek.png";
+import logoAarav from "@/assets/logo-aarav.png";
+import logoTruongSon from "@/assets/logo-truong-son.png";
 
 export const heroImages = [hero1, hero2, hero3];
 
@@ -32,6 +50,8 @@ export type Company = {
   slug: string;
   name: string;
   initials: string;
+  banner: string;
+  logo: string;
   sector: (typeof sectors)[number];
   location: (typeof locations)[number];
   city: string;
