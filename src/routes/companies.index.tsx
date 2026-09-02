@@ -9,14 +9,23 @@ const title = "Danh bạ doanh nghiệp — 1Plastic.Asia";
 const description =
   "Tra cứu doanh nghiệp ngành nhựa và cao su theo tên, lĩnh vực và địa điểm. Hồ sơ năng lực, sản phẩm và kênh liên hệ báo giá.";
 
-type CompanySearch = { q?: string; sector?: string; location?: string };
+type CompanySearch = {
+  q?: string | undefined;
+  sector?: string | undefined;
+  location?: string | undefined;
+};
 
 export const Route = createFileRoute("/companies/")({
-  validateSearch: (search: Record<string, unknown>): CompanySearch => ({
-    q: typeof search.q === "string" && search.q ? search.q : undefined,
-    sector: typeof search.sector === "string" && search.sector ? search.sector : undefined,
-    location: typeof search.location === "string" && search.location ? search.location : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): CompanySearch => {
+    const q = search["q"];
+    const sector = search["sector"];
+    const location = search["location"];
+    return {
+      q: typeof q === "string" && q ? q : undefined,
+      sector: typeof sector === "string" && sector ? sector : undefined,
+      location: typeof location === "string" && location ? location : undefined,
+    };
+  },
   head: () => ({
     meta: [
       { title },
