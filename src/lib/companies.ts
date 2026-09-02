@@ -4,6 +4,24 @@ import hero3 from "@/assets/hero-3.jpg";
 import company1 from "@/assets/company-1.jpg";
 import company2 from "@/assets/company-2.jpg";
 import company3 from "@/assets/company-3.jpg";
+import bannerVinhPolymer from "@/assets/banner-vinh-polymer.jpg";
+import bannerKitayama from "@/assets/banner-kitayama.jpg";
+import bannerHanswerk from "@/assets/banner-hanswerk.jpg";
+import bannerRegra from "@/assets/banner-regra.jpg";
+import bannerSeonjin from "@/assets/banner-seonjin.jpg";
+import bannerThermolink from "@/assets/banner-thermolink.jpg";
+import bannerAuxitek from "@/assets/banner-auxitek.jpg";
+import bannerAarav from "@/assets/banner-aarav.jpg";
+import bannerTruongSon from "@/assets/banner-truong-son.jpg";
+import logoVinhPolymer from "@/assets/logo-vinh-polymer.png";
+import logoKitayama from "@/assets/logo-kitayama.png";
+import logoHanswerk from "@/assets/logo-hanswerk.png";
+import logoRegra from "@/assets/logo-regra.png";
+import logoSeonjin from "@/assets/logo-seonjin.png";
+import logoThermolink from "@/assets/logo-thermolink.png";
+import logoAuxitek from "@/assets/logo-auxitek.png";
+import logoAarav from "@/assets/logo-aarav.png";
+import logoTruongSon from "@/assets/logo-truong-son.png";
 
 export const heroImages = [hero1, hero2, hero3];
 
@@ -32,6 +50,8 @@ export type Company = {
   slug: string;
   name: string;
   initials: string;
+  banner: string;
+  logo: string;
   sector: (typeof sectors)[number];
   location: (typeof locations)[number];
   city: string;
@@ -72,6 +92,8 @@ export const companies: Company[] = [
     slug: "vinh-polymer",
     name: "Vinh Polymer",
     initials: "VP",
+    banner: bannerVinhPolymer,
+    logo: logoVinhPolymer,
     sector: "Máy móc ngành nhựa & cao su",
     location: "Việt Nam",
     city: "Hải Phòng",
@@ -94,6 +116,8 @@ export const companies: Company[] = [
     slug: "kitayama-chemical",
     name: "Kitayama Chemical",
     initials: "KC",
+    banner: bannerKitayama,
+    logo: logoKitayama,
     sector: "Hóa chất & nguyên liệu thô",
     location: "Nhật Bản",
     city: "Osaka",
@@ -116,6 +140,8 @@ export const companies: Company[] = [
     slug: "hanswerk-maschinenguss",
     name: "Hanswerk Maschinenguss",
     initials: "HM",
+    banner: bannerHanswerk,
+    logo: logoHanswerk,
     sector: "Khuôn mẫu",
     location: "Đức",
     city: "Stuttgart",
@@ -138,6 +164,8 @@ export const companies: Company[] = [
     slug: "regra-recyclables",
     name: "Regra Recyclables",
     initials: "RR",
+    banner: bannerRegra,
+    logo: logoRegra,
     sector: "Tái chế",
     location: "Thái Lan",
     city: "Rayong",
@@ -160,6 +188,8 @@ export const companies: Company[] = [
     slug: "seonjin-hydraulics",
     name: "Seonjin Hydraulics",
     initials: "SH",
+    banner: bannerSeonjin,
+    logo: logoSeonjin,
     sector: "Thủy lực & khí nén",
     location: "Hàn Quốc",
     city: "Busan",
@@ -182,6 +212,8 @@ export const companies: Company[] = [
     slug: "thermolink-controls",
     name: "Thermolink Controls",
     initials: "TC",
+    banner: bannerThermolink,
+    logo: logoThermolink,
     sector: "Thiết bị gia nhiệt & điều khiển",
     location: "Đài Loan",
     city: "Đài Trung",
@@ -204,6 +236,8 @@ export const companies: Company[] = [
     slug: "auxitek-systems",
     name: "Auxitek Systems",
     initials: "AS",
+    banner: bannerAuxitek,
+    logo: logoAuxitek,
     sector: "Máy móc phụ trợ",
     location: "Trung Quốc",
     city: "Ninh Ba",
@@ -226,6 +260,8 @@ export const companies: Company[] = [
     slug: "aarav-compounds",
     name: "Aarav Compounds",
     initials: "AC",
+    banner: bannerAarav,
+    logo: logoAarav,
     sector: "Hóa chất & nguyên liệu thô",
     location: "Ấn Độ",
     city: "Ahmedabad",
@@ -248,6 +284,8 @@ export const companies: Company[] = [
     slug: "truong-son-extrusion",
     name: "Trường Sơn Extrusion",
     initials: "TS",
+    banner: bannerTruongSon,
+    logo: logoTruongSon,
     sector: "Máy móc ngành nhựa & cao su",
     location: "Việt Nam",
     city: "Bình Dương",
