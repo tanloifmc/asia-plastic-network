@@ -4,12 +4,30 @@ import type { Company } from "@/lib/companies";
 export function CompanyCard({ company }: { company: Company }) {
   return (
     <article className="overflow-hidden rounded-[14px] bg-frame ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel">
-      <div className="p-5">
-        <div className="flex items-center gap-3">
-          <div className="grid size-12 shrink-0 place-items-center rounded-md bg-steel font-display text-base font-bold text-amber">
-            {company.initials}
+      <div className="relative h-32 overflow-hidden">
+        <img
+          src={company.banner}
+          alt={`Nhà máy ${company.name}`}
+          loading="lazy"
+          width={1024}
+          height={512}
+          className="size-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-frame via-transparent to-transparent" />
+      </div>
+      <div className="p-5 pt-0">
+        <div className="-mt-8 flex items-end gap-3">
+          <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-[12px] bg-brand ring-1 ring-line">
+            <img
+              src={company.logo}
+              alt={`Logo ${company.name}`}
+              loading="lazy"
+              width={512}
+              height={512}
+              className="size-12 object-contain"
+            />
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0 pb-1">
             <h3 className="truncate font-display text-lg font-semibold leading-tight">
               {company.name}
             </h3>
@@ -47,7 +65,7 @@ export function CompanyCard({ company }: { company: Company }) {
             />
           </svg>
         </Link>
-        <span className="text-xs text-muted">RFQ</span>
+        <span className="text-xs text-muted">{company.sector}</span>
       </div>
     </article>
   );
