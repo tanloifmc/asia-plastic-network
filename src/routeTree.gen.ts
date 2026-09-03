@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CompaniesRouteImport } from './routes/companies'
+import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as SectorsRouteImport } from './routes/sectors'
 import { Route as CompaniesIndexRouteImport } from './routes/companies.index'
 import { Route as CompaniesSlugRouteImport } from './routes/companies.$slug'
@@ -29,6 +30,11 @@ const AboutRoute = AboutRouteImport.update({
 const CompaniesRoute = CompaniesRouteImport.update({
   id: '/companies',
   path: '/companies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpportunitiesRoute = OpportunitiesRouteImport.update({
+  id: '/opportunities',
+  path: '/opportunities',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SectorsRoute = SectorsRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/companies': typeof CompaniesRouteWithChildren
+  '/opportunities': typeof OpportunitiesRoute
   '/sectors': typeof SectorsRoute
   '/companies/$slug': typeof CompaniesSlugRoute
   '/companies/': typeof CompaniesIndexRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/opportunities': typeof OpportunitiesRoute
   '/sectors': typeof SectorsRoute
   '/companies/$slug': typeof CompaniesSlugRoute
   '/companies': typeof CompaniesIndexRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/companies': typeof CompaniesRouteWithChildren
+  '/opportunities': typeof OpportunitiesRoute
   '/sectors': typeof SectorsRoute
   '/companies/$slug': typeof CompaniesSlugRoute
   '/companies/': typeof CompaniesIndexRoute
@@ -77,16 +86,24 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/companies'
+    | '/opportunities'
     | '/sectors'
     | '/companies/$slug'
     | '/companies/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/sectors' | '/companies/$slug' | '/companies'
+  to:
+    | '/'
+    | '/about'
+    | '/opportunities'
+    | '/sectors'
+    | '/companies/$slug'
+    | '/companies'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/companies'
+    | '/opportunities'
     | '/sectors'
     | '/companies/$slug'
     | '/companies/'
@@ -96,6 +113,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CompaniesRoute: typeof CompaniesRouteWithChildren
+  OpportunitiesRoute: typeof OpportunitiesRoute
   SectorsRoute: typeof SectorsRoute
 }
 
@@ -120,6 +138,13 @@ declare module '@tanstack/react-router' {
       path: '/companies'
       fullPath: '/companies'
       preLoaderRoute: typeof CompaniesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunities': {
+      id: '/opportunities'
+      path: '/opportunities'
+      fullPath: '/opportunities'
+      preLoaderRoute: typeof OpportunitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sectors': {
@@ -164,6 +189,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CompaniesRoute: CompaniesRouteWithChildren,
+  OpportunitiesRoute: OpportunitiesRoute,
   SectorsRoute: SectorsRoute,
 }
 export const routeTree = rootRouteImport
