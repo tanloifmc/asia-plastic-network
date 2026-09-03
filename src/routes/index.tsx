@@ -161,7 +161,54 @@ function Index() {
             ))}
           </div>
         </section>
+
+        <section className="mt-20">
+          <div className="mb-6 flex items-end justify-between">
+            <div>
+              <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-amber">
+                Giao thương
+              </p>
+              <h2 className="text-balance font-display text-3xl font-semibold leading-tight md:text-4xl">
+                Cơ hội kinh doanh
+              </h2>
+            </div>
+            <Link
+              to="/opportunities"
+              className="hidden items-center gap-1.5 text-sm text-muted transition-colors hover:text-ink sm:inline-flex"
+            >
+              Xem tất cả cơ hội
+            </Link>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {opportunities.slice(0, 3).map((op) => {
+              const company = companyOf(op);
+              return (
+                <Link
+                  key={op.id}
+                  to="/opportunities"
+                  className="flex flex-col rounded-[14px] bg-frame p-6 ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel"
+                >
+                  <span className="w-fit rounded-full bg-amber/15 px-3 py-1 text-xs font-medium text-amber">
+                    {op.type}
+                  </span>
+                  <h3 className="mt-4 text-balance font-display text-lg font-semibold leading-tight">
+                    {op.title}
+                  </h3>
+                  <p className="mt-3 line-clamp-3 text-pretty text-sm leading-relaxed text-muted">
+                    {op.description}
+                  </p>
+                  <span className="mt-5 text-xs text-muted">
+                    {company ? `${company.name} · ${company.location}` : op.markets} · Hạn{" "}
+                    {op.deadline}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
       </main>
+
 
       <SiteFooter />
     </div>
