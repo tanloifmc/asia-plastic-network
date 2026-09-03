@@ -1,7 +1,9 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HeroSlider } from "@/components/hero-slider";
+import { RfqDialog } from "@/components/rfq-dialog";
 import { getCompany, companies } from "@/lib/companies";
 
 export const Route = createFileRoute("/companies/$slug")({
