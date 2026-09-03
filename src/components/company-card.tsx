@@ -3,51 +3,48 @@ import type { Company } from "@/lib/companies";
 
 export function CompanyCard({ company }: { company: Company }) {
   return (
-    <article className="overflow-hidden rounded-[14px] bg-frame ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel">
-      <div className="relative h-32 overflow-hidden">
+    <article className="flex flex-col overflow-hidden rounded-[14px] bg-frame ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel">
+      <div className="relative aspect-[2/1] w-full overflow-hidden">
         <img
           src={company.banner}
           alt={`Nhà máy ${company.name}`}
           loading="lazy"
           width={1024}
           height={512}
-          className="size-full object-cover"
+          className="absolute inset-0 size-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-frame via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-frame via-frame/25 to-transparent" />
       </div>
-      <div className="p-5 pt-0">
-        <div className="-mt-8 flex items-end gap-3">
-          <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-[12px] bg-brand ring-1 ring-line">
-            <img
-              src={company.logo}
-              alt={`Logo ${company.name}`}
-              loading="lazy"
-              width={512}
-              height={512}
-              className="size-12 object-contain"
-            />
-          </div>
-          <div className="min-w-0 pb-1">
-            <h3 className="truncate font-display text-lg font-semibold leading-tight">
-              {company.name}
-            </h3>
-            <p className="mt-0.5 flex items-center gap-1.5 text-xs text-muted">
-              <svg className="size-3.5 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.3" />
-                <path
-                  d="M3 10h14M10 3c-2 2-2 12 0 14M10 3c2 2 2 12 0 14"
-                  stroke="currentColor"
-                  strokeWidth="1.3"
-                />
-              </svg>
-              <span className="truncate">
-                {company.location} · {company.tagline}
-              </span>
-            </p>
-          </div>
+
+      <div className="flex flex-1 flex-col p-5">
+        <div className="-mt-14 mb-4 grid size-16 place-items-center overflow-hidden rounded-[12px] bg-brand ring-1 ring-line">
+          <img
+            src={company.logo}
+            alt={`Logo ${company.name}`}
+            loading="lazy"
+            width={512}
+            height={512}
+            className="size-11 object-contain"
+          />
         </div>
-        <p className="mt-4 text-pretty text-sm leading-relaxed text-muted">{company.summary}</p>
+
+        <h3 className="font-display text-lg font-semibold leading-tight">{company.name}</h3>
+        <p className="mt-1 flex items-center gap-1.5 text-xs text-muted">
+          <svg className="size-3.5 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.3" />
+            <path
+              d="M3 10h14M10 3c-2 2-2 12 0 14M10 3c2 2 2 12 0 14"
+              stroke="currentColor"
+              strokeWidth="1.3"
+            />
+          </svg>
+          <span className="truncate">
+            {company.location} · {company.tagline}
+          </span>
+        </p>
+        <p className="mt-3 text-pretty text-sm leading-relaxed text-muted">{company.summary}</p>
       </div>
+
       <div className="flex items-center justify-between border-t border-line/60 px-5 py-4">
         <Link
           to="/companies/$slug"
@@ -65,7 +62,7 @@ export function CompanyCard({ company }: { company: Company }) {
             />
           </svg>
         </Link>
-        <span className="text-xs text-muted">{company.sector}</span>
+        <span className="truncate pl-3 text-right text-xs text-muted">{company.sector}</span>
       </div>
     </article>
   );
