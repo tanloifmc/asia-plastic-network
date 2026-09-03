@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const nav = [
   { to: "/", label: "Trang chủ" },
   { to: "/companies", label: "Danh bạ" },
+  { to: "/opportunities", label: "Cơ hội kinh doanh" },
   { to: "/sectors", label: "Lĩnh vực" },
   { to: "/about", label: "Về chúng tôi" },
 ] as const;
