@@ -34,7 +34,7 @@ const slides = [
   },
   {
     image: heroImages[1]!,
-    eyebrow: "Hơn 650 doanh nghiệp · 15+ quốc gia",
+    eyebrow: "Hơn 480 hồ sơ · 12 thị trường",
     title: "Tìm đối tác theo từng mắt xích",
     text: "Máy móc, hóa chất, khuôn mẫu, thủy lực và tái chế — lọc theo lĩnh vực và địa điểm chỉ trong vài giây.",
   },
@@ -47,10 +47,10 @@ const slides = [
 ];
 
 const sectorCards = [
-  { count: "860", name: "Hóa chất & nguyên liệu thô" },
-  { count: "540", name: "Máy móc phụ trợ" },
-  { count: "410", name: "Khuôn mẫu & thủy lực" },
-  { count: "320", name: "Tái chế & gia nhiệt" },
+  { count: "126", name: "Hóa chất & nguyên liệu thô" },
+  { count: "94", name: "Máy móc phụ trợ" },
+  { count: "78", name: "Khuôn mẫu & thủy lực" },
+  { count: "61", name: "Tái chế & gia nhiệt" },
 ];
 
 function Index() {
@@ -93,7 +93,7 @@ function Index() {
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             <div className="col-span-2 row-span-2 flex flex-col justify-between rounded-[12px] bg-frame p-6 ring-1 ring-line transition-transform hover:-translate-y-0.5 hover:ring-steel">
               <div>
-                <span className="font-display text-4xl font-bold leading-none text-amber">1240</span>
+                <span className="font-display text-4xl font-bold leading-none text-amber">121</span>
                 <p className="mt-3 font-display text-xl font-semibold leading-tight">
                   Máy móc ngành nhựa &amp; cao su
                 </p>
@@ -121,7 +121,7 @@ function Index() {
 
             <div className="col-span-2 flex items-center justify-between rounded-[12px] bg-amber p-5 text-brand ring-1 ring-amber/40 transition-transform hover:-translate-y-0.5 hover:ring-amber">
               <div>
-                <p className="font-display text-lg font-semibold leading-tight">+15 quốc gia</p>
+                <p className="font-display text-lg font-semibold leading-tight">12 thị trường</p>
                 <p className="mt-1 text-pretty text-sm opacity-80">
                   Mạng lưới nguồn hàng xuyên Á-Âu
                 </p>

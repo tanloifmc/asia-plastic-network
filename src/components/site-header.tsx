@@ -54,7 +54,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <span className="hidden items-center gap-1.5 text-xs text-muted sm:inline-flex">
             <span className="size-1.5 rounded-full bg-amber" />
-            650+ doanh nghiệp
+            480+ hồ sơ doanh nghiệp
           </span>
           <Link
             to="/companies"

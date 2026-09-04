@@ -21,10 +21,10 @@ export const Route = createFileRoute("/about")({
 });
 
 const stats = [
-  ["650+", "Doanh nghiệp niêm yết"],
-  ["15+", "Quốc gia tham gia"],
-  ["7", "Nhóm ngành chuyên biệt"],
-  ["48h", "Thời gian phản hồi RFQ"],
+  ["480+", "Hồ sơ doanh nghiệp"],
+  ["12", "Thị trường giao thương"],
+  ["6", "Nhóm ngành trong danh bạ"],
+  ["24h", "Thời gian phản hồi RFQ"],
 ];
 
 function AboutPage() {
