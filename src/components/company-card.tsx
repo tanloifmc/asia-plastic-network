@@ -50,11 +50,7 @@ export function CompanyCard({ company }: { company: Company }) {
       </div>
 
       <div className="flex items-center justify-between border-t border-line/60 px-5 py-4">
-        <Link
-          to="/companies/$slug"
-          params={{ slug: company.slug }}
-          className="flex items-center gap-1.5 text-sm font-medium text-ink transition-colors hover:text-amber"
-        >
+        <span className="flex items-center gap-1.5 text-sm font-medium text-ink transition-colors group-hover:text-amber">
           Xem hồ sơ
           <svg className="size-4 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path
@@ -65,9 +61,9 @@ export function CompanyCard({ company }: { company: Company }) {
               strokeLinejoin="round"
             />
           </svg>
-        </Link>
+        </span>
         <span className="truncate pl-3 text-right text-xs text-muted">{company.sector}</span>
       </div>
-    </article>
+    </Link>
   );
 }
