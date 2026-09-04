@@ -2,7 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { RfqDialog } from "@/components/rfq-dialog";
 import { opportunities, opportunityTypes, companyOf } from "@/lib/opportunities";
+import type { Company } from "@/lib/companies";
 
 const title = "Cơ hội kinh doanh ngành Nhựa & Cao su — 1Plastic.Asia";
 const description =
@@ -24,6 +26,7 @@ export const Route = createFileRoute("/opportunities")({
 
 function OpportunitiesPage() {
   const [type, setType] = useState<string>("");
+  const [contact, setContact] = useState<Company | null>(null);
 
   const list = useMemo(
     () => (type ? opportunities.filter((o) => o.type === type) : opportunities),
@@ -139,14 +142,13 @@ function OpportunitiesPage() {
 
                 <div className="mt-6 flex items-center gap-3">
                   {company ? (
-                    <a
-                      href={`mailto:${company.email}?subject=${encodeURIComponent(
-                        `[1Plastic.Asia] Quan tâm cơ hội: ${op.title}`,
-                      )}`}
+                    <button
+                      type="button"
+                      onClick={() => setContact(company)}
                       className="rounded-md bg-amber px-4 py-2 text-sm font-medium text-brand transition-opacity hover:opacity-90"
                     >
                       Liên hệ hợp tác
-                    </a>
+                    </button>
                   ) : null}
                   {company ? (
                     <Link
@@ -168,7 +170,7 @@ function OpportunitiesPage() {
             Doanh nghiệp của bạn đang tìm đối tác?
           </h2>
           <p className="mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-muted">
-            Gửi thông tin nhu cầu hợp tác để đăng tin lên mục Cơ hội kinh doanh và tiếp cận hơn 650
+            Gửi thông tin nhu cầu hợp tác để đăng tin lên mục Cơ hội kinh doanh và tiếp cận hơn 480
             doanh nghiệp trong danh bạ.
           </p>
           <a
@@ -183,6 +185,10 @@ function OpportunitiesPage() {
           </a>
         </section>
       </main>
+
+      {contact ? (
+        <RfqDialog company={contact} open={true} onClose={() => setContact(null)} />
+      ) : null}
 
       <SiteFooter />
     </div>
