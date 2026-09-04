@@ -17,7 +17,7 @@ export function CompanyCard({ company }: { company: Company }) {
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <div className="-mt-14 mb-4 grid size-16 place-items-center overflow-hidden rounded-[12px] bg-brand ring-1 ring-line">
+        <div className="relative z-10 -mt-14 mb-4 grid size-16 place-items-center overflow-hidden rounded-[12px] bg-brand shadow-lg shadow-black/30 ring-1 ring-line">
           <img
             src={company.logo}
             alt={`Logo ${company.name}`}
