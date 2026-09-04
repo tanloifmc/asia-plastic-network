@@ -3,7 +3,11 @@ import type { Company } from "@/lib/companies";
 
 export function CompanyCard({ company }: { company: Company }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-[14px] bg-frame ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel">
+    <Link
+      to="/companies/$slug"
+      params={{ slug: company.slug }}
+      className="group flex flex-col overflow-hidden rounded-[14px] bg-frame ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel"
+    >
       <div className="relative aspect-[2/1] w-full overflow-hidden">
         <img
           src={company.banner}
