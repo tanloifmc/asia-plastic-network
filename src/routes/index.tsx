@@ -5,6 +5,7 @@ import { HeroSlider } from "@/components/hero-slider";
 import { SearchBar } from "@/components/search-bar";
 import { CompanyCard } from "@/components/company-card";
 import { companies, heroImages } from "@/lib/companies";
+import { opportunities, companyOf } from "@/lib/opportunities";
 
 const title = "1Plastic.Asia — Danh bạ doanh nghiệp Nhựa & Cao su châu Á";
 const description =
