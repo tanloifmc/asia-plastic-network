@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { RfqDialog } from "@/components/rfq-dialog";
+import { ContactDialog } from "@/components/contact-dialog";
 import { opportunities, opportunityTypes, companyOf } from "@/lib/opportunities";
 import type { Company } from "@/lib/companies";
 
@@ -187,7 +187,7 @@ function OpportunitiesPage() {
       </main>
 
       {contact ? (
-        <RfqDialog company={contact} open={true} onClose={() => setContact(null)} />
+        <ContactDialog company={contact} open={true} onClose={() => setContact(null)} />
       ) : null}
 
       <SiteFooter />
