@@ -81,9 +81,9 @@ DROP POLICY IF EXISTS "Admin Insert Access" ON storage.objects;
 DROP POLICY IF EXISTS "Admin Update Access" ON storage.objects;
 DROP POLICY IF EXISTS "Admin Delete Access" ON storage.objects;
 
--- Mọi người đều có thể XEM ảnh
+-- Mọi người đều có thể XEM ảnh qua URL Public, nhưng chỉ Admin mới có thể gọi API List/Search files
 CREATE POLICY "Public Access"
-ON storage.objects FOR SELECT USING ( bucket_id = 'company-images' );
+ON storage.objects FOR SELECT USING ( bucket_id = 'company-images' AND auth.role() = 'authenticated' );
 
 -- Chỉ Admin mới được TẢI LÊN, SỬA, XÓA ảnh
 CREATE POLICY "Admin Insert Access"
@@ -94,5 +94,14 @@ ON storage.objects FOR UPDATE USING ( bucket_id = 'company-images' AND auth.role
 
 CREATE POLICY "Admin Delete Access"
 ON storage.objects FOR DELETE USING ( bucket_id = 'company-images' AND auth.role() = 'authenticated' );
+
+-- ==========================================
+-- BỔ SUNG: VÁ CÁC LỖI BẢO MẬT TỪ SUPABASE LINTER
+-- ==========================================
+-- Sửa lỗi: Public Can Execute SECURITY DEFINER Function (rls_auto_enable)
+-- Thu hồi quyền thực thi từ public/anon
+REVOKE EXECUTE ON FUNCTION public.rls_auto_enable() FROM PUBLIC;
+REVOKE EXECUTE ON FUNCTION public.rls_auto_enable() FROM anon;
+REVOKE EXECUTE ON FUNCTION public.rls_auto_enable() FROM authenticated;
 
 -- HOÀN TẤT!
