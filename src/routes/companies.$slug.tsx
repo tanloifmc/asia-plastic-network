@@ -37,7 +37,7 @@ export const Route = createFileRoute("/companies/$slug")({
 
 function CompanyPage() {
   const { company } = Route.useLoaderData();
-  const [contactOpen, setContactOpen] = useState(false);
+  const [contactMode, setContactMode] = useState<"rfq" | "partnership" | null>(null);
   const related = companies.filter((c) => c.sector === company.sector && c.slug !== company.slug);
 
   return (
