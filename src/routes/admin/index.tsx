@@ -1,0 +1,107 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { supabase } from "../../lib/supabase";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
+import { Plus, Edit, Trash2 } from "lucide-react";
+import { toast } from "sonner";
+
+export const Route = createFileRoute("/admin/")({
+  component: AdminDashboard,
+});
+
+function AdminDashboard() {
+  const [companies, setCompanies] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchCompanies = async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("companies")
+      .select("id, slug, name, sector, city, created_at")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      toast.error("Lỗi tải dữ liệu: " + error.message);
+    } else {
+      setCompanies(data || []);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchCompanies();
+  }, []);
+
+  const handleDelete = async (id: string, name: string) => {
+    if (confirm(`Bạn có chắc muốn xoá doanh nghiệp "${name}"?`)) {
+      const { error } = await supabase.from("companies").delete().eq("id", id);
+      if (error) {
+        toast.error("Xoá thất bại: " + error.message);
+      } else {
+        toast.success("Xoá thành công!");
+        fetchCompanies();
+      }
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-3xl font-bold tracking-tight">Danh sách doanh nghiệp</h2>
+        <Button asChild>
+          <Link to="/admin/companies/new">
+            <Plus className="mr-2 h-4 w-4" /> Thêm doanh nghiệp
+          </Link>
+        </Button>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Tổng quan ({companies.length})</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {loading ? (
+            <div className="text-center py-10 text-gray-500">Đang tải dữ liệu...</div>
+          ) : companies.length === 0 ? (
+            <div className="text-center py-10 text-gray-500">Chưa có doanh nghiệp nào.</div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3">Tên công ty</th>
+                    <th className="px-6 py-3">Slug</th>
+                    <th className="px-6 py-3">Ngành nghề</th>
+                    <th className="px-6 py-3">Thành phố</th>
+                    <th className="px-6 py-3 text-right">Hành động</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {companies.map((c) => (
+                    <tr key={c.id} className="bg-white border-b hover:bg-gray-50">
+                      <td className="px-6 py-4 font-medium text-gray-900">{c.name}</td>
+                      <td className="px-6 py-4">{c.slug}</td>
+                      <td className="px-6 py-4">{c.sector}</td>
+                      <td className="px-6 py-4">{c.city}</td>
+                      <td className="px-6 py-4 text-right space-x-2">
+                        <Button variant="outline" size="icon" asChild>
+                          <Link to={`/admin/companies/$slug`} params={{ slug: c.slug }}>
+                            <Edit className="h-4 w-4" />
+                          </Link>
+                        </Button>
+                        <Button variant="destructive" size="icon" onClick={() => handleDelete(c.id, c.name)}>
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

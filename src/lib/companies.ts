@@ -104,31 +104,47 @@ export type Company = {
   sections?: CompanySection[];
 };
 
-// ── Đọc tất cả JSON trong src/data/companies/ ─────────────────────────────
-// Vite's import.meta.glob tự động nhận diện khi có file JSON mới được thêm vào.
-// Không cần sửa file này khi thêm công ty mới.
-const modules = import.meta.glob("../data/companies/*.json", {
-  eager: true,
-}) as Record<string, { default: Company }>;
-
-export const companies: Company[] = Object.values(modules)
-  .map((m) => m.default)
-  .sort((a, b) => a.name.localeCompare(b.name, "vi"));
+import { supabase } from "./supabase";
 
 // ── Hàm tiện ích ──────────────────────────────────────────────────────────
-export const getCompany = (slug: string): Company | undefined =>
-  companies.find((c) => c.slug === slug);
+export const fetchCompanies = async (): Promise<Company[]> => {
+  const { data, error } = await supabase
+    .from("companies")
+    .select("*")
+    .order("name", { ascending: true });
+  
+  if (error) {
+    console.error("Lỗi fetch danh sách công ty:", error);
+    return [];
+  }
+  return data as Company[];
+};
 
-export const getCompaniesBySector = (sector: Sector): Company[] =>
-  companies.filter((c) => c.sector === sector);
+export const fetchCompanyBySlug = async (slug: string): Promise<Company | undefined> => {
+  const { data, error } = await supabase
+    .from("companies")
+    .select("*")
+    .eq("slug", slug)
+    .single();
 
-export const getCompaniesByLocation = (location: Location): Company[] =>
-  companies.filter((c) => c.location === location);
+  if (error) {
+    console.error(`Lỗi fetch công ty ${slug}:`, error);
+    return undefined;
+  }
+  return data as Company;
+};
 
-export const sectorStats = sectors.map((s) => ({
-  name: s,
-  count: companies.filter((c) => c.sector === s).length,
-}));
+export const fetchSectorStats = async () => {
+  // Thay vì query từng sector phức tạp, ta fetch select("sector")
+  const { data, error } = await supabase.from("companies").select("sector");
+  if (error) return [];
+  
+  const stats = sectors.map((s) => ({
+    name: s,
+    count: data.filter((c) => c.sector === s).length,
+  }));
+  return stats;
+};
 
 // ── heroImages: dùng cho trang chủ ────────────────────────────────────────
 // Dùng URL từ public/ — không cần import tĩnh

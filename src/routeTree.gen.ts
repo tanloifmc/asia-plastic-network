@@ -11,11 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CompaniesRouteImport } from './routes/companies'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as SectorsRouteImport } from './routes/sectors'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as CompaniesIndexRouteImport } from './routes/companies.index'
 import { Route as CompaniesSlugRouteImport } from './routes/companies.$slug'
+import { Route as AdminCompaniesSlugRouteImport } from './routes/admin/companies.$slug'
+import { Route as AdminCompaniesNewRouteImport } from './routes/admin/companies.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -25,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompaniesRoute = CompaniesRouteImport.update({
@@ -42,6 +52,16 @@ const SectorsRoute = SectorsRouteImport.update({
   path: '/sectors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
 const CompaniesIndexRoute = CompaniesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -52,66 +72,105 @@ const CompaniesSlugRoute = CompaniesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => CompaniesRoute,
 } as any)
+const AdminCompaniesSlugRoute = AdminCompaniesSlugRouteImport.update({
+  id: '/companies/$slug',
+  path: '/companies/$slug',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCompaniesNewRoute = AdminCompaniesNewRouteImport.update({
+  id: '/companies/new',
+  path: '/companies/new',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/companies': typeof CompaniesRouteWithChildren
   '/opportunities': typeof OpportunitiesRoute
   '/sectors': typeof SectorsRoute
+  '/admin/login': typeof AdminLoginRoute
   '/companies/$slug': typeof CompaniesSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/companies/': typeof CompaniesIndexRoute
+  '/admin/companies/$slug': typeof AdminCompaniesSlugRoute
+  '/admin/companies/new': typeof AdminCompaniesNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/opportunities': typeof OpportunitiesRoute
   '/sectors': typeof SectorsRoute
+  '/admin/login': typeof AdminLoginRoute
   '/companies/$slug': typeof CompaniesSlugRoute
+  '/admin': typeof AdminIndexRoute
   '/companies': typeof CompaniesIndexRoute
+  '/admin/companies/$slug': typeof AdminCompaniesSlugRoute
+  '/admin/companies/new': typeof AdminCompaniesNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/companies': typeof CompaniesRouteWithChildren
   '/opportunities': typeof OpportunitiesRoute
   '/sectors': typeof SectorsRoute
+  '/admin/login': typeof AdminLoginRoute
   '/companies/$slug': typeof CompaniesSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/companies/': typeof CompaniesIndexRoute
+  '/admin/companies/$slug': typeof AdminCompaniesSlugRoute
+  '/admin/companies/new': typeof AdminCompaniesNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/companies'
     | '/opportunities'
     | '/sectors'
+    | '/admin/login'
     | '/companies/$slug'
+    | '/admin/'
     | '/companies/'
+    | '/admin/companies/$slug'
+    | '/admin/companies/new'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/opportunities'
     | '/sectors'
+    | '/admin/login'
     | '/companies/$slug'
+    | '/admin'
     | '/companies'
+    | '/admin/companies/$slug'
+    | '/admin/companies/new'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/companies'
     | '/opportunities'
     | '/sectors'
+    | '/admin/login'
     | '/companies/$slug'
+    | '/admin/'
     | '/companies/'
+    | '/admin/companies/$slug'
+    | '/admin/companies/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   CompaniesRoute: typeof CompaniesRouteWithChildren
   OpportunitiesRoute: typeof OpportunitiesRoute
   SectorsRoute: typeof SectorsRoute
@@ -131,6 +190,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/companies': {
@@ -154,6 +220,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SectorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/companies/': {
       id: '/companies/'
       path: '/'
@@ -168,8 +248,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompaniesSlugRouteImport
       parentRoute: typeof CompaniesRoute
     }
+    '/admin/companies/$slug': {
+      id: '/admin/companies/$slug'
+      path: '/companies/$slug'
+      fullPath: '/admin/companies/$slug'
+      preLoaderRoute: typeof AdminCompaniesSlugRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/companies/new': {
+      id: '/admin/companies/new'
+      path: '/companies/new'
+      fullPath: '/admin/companies/new'
+      preLoaderRoute: typeof AdminCompaniesNewRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
+
+interface AdminRouteChildren {
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminCompaniesSlugRoute: typeof AdminCompaniesSlugRoute
+  AdminCompaniesNewRoute: typeof AdminCompaniesNewRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminLoginRoute: AdminLoginRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  AdminCompaniesSlugRoute: AdminCompaniesSlugRoute,
+  AdminCompaniesNewRoute: AdminCompaniesNewRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface CompaniesRouteChildren {
   CompaniesSlugRoute: typeof CompaniesSlugRoute
@@ -188,6 +298,7 @@ const CompaniesRouteWithChildren = CompaniesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   CompaniesRoute: CompaniesRouteWithChildren,
   OpportunitiesRoute: OpportunitiesRoute,
   SectorsRoute: SectorsRoute,

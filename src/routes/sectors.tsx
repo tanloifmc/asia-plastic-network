@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { companies, sectors } from "@/lib/companies";
+import { sectors, fetchSectorStats } from "@/lib/companies";
 
 const title = "Lĩnh vực ngành Nhựa & Cao su — 1Plastic.Asia";
 const description =
@@ -18,10 +18,14 @@ export const Route = createFileRoute("/sectors")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  loader: async () => {
+    return await fetchSectorStats();
+  },
   component: SectorsPage,
 });
 
 function SectorsPage() {
+  const stats = Route.useLoaderData();
   return (
     <div className="min-h-screen bg-brand text-ink">
       <SiteHeader />
@@ -38,7 +42,8 @@ function SectorsPage() {
 
         <div className="mt-10 grid gap-3 md:grid-cols-2">
           {sectors.map((s, i) => {
-            const count = companies.filter((c) => c.sector === s).length;
+            const statObj = stats.find((stat) => stat.name === s);
+            const count = statObj ? statObj.count : 0;
             return (
               <Link
                 key={s}

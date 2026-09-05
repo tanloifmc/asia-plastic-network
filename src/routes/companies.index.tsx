@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SearchBar } from "@/components/search-bar";
 import { CompanyCard } from "@/components/company-card";
-import { companies } from "@/lib/companies";
+import { fetchCompanies, Company } from "@/lib/companies";
 
 const title = "Danh bạ doanh nghiệp — 1Plastic.Asia";
 const description =
@@ -17,21 +17,7 @@ type CompanySearch = {
   location?: string | undefined;
 };
 
-// Khởi tạo Fuse.js một lần duy nhất — không tái tạo khi re-render
-const fuse = new Fuse(companies, {
-  // Các trường tìm kiếm theo mức độ ưu tiên (weight)
-  keys: [
-    { name: "name", weight: 0.5 },        // Tên công ty — quan trọng nhất
-    { name: "tagline", weight: 0.2 },      // Slogan
-    { name: "city", weight: 0.1 },         // Thành phố
-    { name: "capabilities", weight: 0.1 }, // ISO, Chứng chỉ...
-    { name: "products.name", weight: 0.1 },// Tên sản phẩm
-  ],
-  threshold: 0.4,        // 0 = chính xác tuyệt đối, 1 = bất kỳ. 0.4 = thực tế tốt
-  includeScore: false,
-  ignoreLocation: true,  // Tìm ở bất kỳ vị trí nào trong chuỗi
-  minMatchCharLength: 2,
-});
+
 
 export const Route = createFileRoute("/companies/")({
   validateSearch: (search: Record<string, unknown>): CompanySearch => {
@@ -54,22 +40,41 @@ export const Route = createFileRoute("/companies/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  loader: async () => {
+    return await fetchCompanies();
+  },
   component: CompaniesPage,
 });
 
 function CompaniesPage() {
   const { q, sector, location } = Route.useSearch();
+  const companies = Route.useLoaderData();
 
   const results = useMemo(() => {
-    // Bước 1: Fuse.js fuzzy search theo từ khoá q
-    let pool = q ? fuse.search(q).map((r) => r.item) : companies;
+    let pool = companies;
+
+    if (q) {
+      const fuse = new Fuse(companies, {
+        keys: [
+          { name: "name", weight: 0.5 },
+          { name: "tagline", weight: 0.2 },
+          { name: "city", weight: 0.1 },
+          { name: "capabilities", weight: 0.1 },
+          { name: "products.name", weight: 0.1 },
+        ],
+        threshold: 0.4,
+        ignoreLocation: true,
+        minMatchCharLength: 2,
+      });
+      pool = fuse.search(q).map((r) => r.item);
+    }
 
     // Bước 2: Lọc thêm theo sector và location (chính xác tuyệt đối)
     if (sector) pool = pool.filter((c) => c.sector === sector);
     if (location) pool = pool.filter((c) => c.location === location);
 
     return pool;
-  }, [q, sector, location]);
+  }, [q, sector, location, companies]);
 
   const hasFilters = q ?? sector ?? location;
 

@@ -9,12 +9,14 @@ import { GallerySectionComponent } from "@/components/sections/gallery-section";
 import { CertificationsSectionComponent } from "@/components/sections/certifications-section";
 import { TextSectionComponent } from "@/components/sections/text-section";
 import { VideoSectionComponent } from "@/components/sections/video-section";
-import { getCompany, companies, type CompanySection } from "@/lib/companies";
+import { fetchCompanyBySlug, type CompanySection } from "@/lib/companies";
 
 export const Route = createFileRoute("/companies/$slug")({
-  loader: ({ params }) => {
-    const company = getCompany(params.slug);
-    if (!company) throw notFound();
+  loader: async ({ params }) => {
+    const company = await fetchCompanyBySlug(params.slug);
+    if (!company) {
+      throw notFound();
+    }
     return { company };
   },
   head: ({ loaderData }) => {

@@ -1,4 +1,4 @@
-import { companies, type Company } from "@/lib/companies";
+import type { Company } from "@/lib/companies";
 
 export const opportunityTypes = [
   "Tìm nhà phân phối",
@@ -97,6 +97,3 @@ export const opportunities: Opportunity[] = [
   },
 ];
 
-export function companyOf(op: Opportunity): Company | undefined {
-  return companies.find((c) => c.slug === op.companySlug);
-}

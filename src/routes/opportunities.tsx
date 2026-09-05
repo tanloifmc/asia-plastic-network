@@ -3,8 +3,8 @@ import { useMemo, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContactDialog } from "@/components/contact-dialog";
-import { opportunities, opportunityTypes, companyOf } from "@/lib/opportunities";
-import type { Company } from "@/lib/companies";
+import { opportunities, opportunityTypes } from "@/lib/opportunities";
+import { fetchCompanies, type Company } from "@/lib/companies";
 
 const title = "Cơ hội kinh doanh ngành Nhựa & Cao su — 1Plastic.Asia";
 const description =
@@ -21,10 +21,14 @@ export const Route = createFileRoute("/opportunities")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  loader: async () => {
+    return await fetchCompanies();
+  },
   component: OpportunitiesPage,
 });
 
 function OpportunitiesPage() {
+  const companies = Route.useLoaderData();
   const [type, setType] = useState<string>("");
   const [contact, setContact] = useState<Company | null>(null);
 
@@ -79,7 +83,7 @@ function OpportunitiesPage() {
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {list.map((op) => {
-            const company = companyOf(op);
+            const company = companies.find(c => c.slug === op.companySlug);
             return (
               <article
                 key={op.id}

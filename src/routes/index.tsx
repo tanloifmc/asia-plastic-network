@@ -4,8 +4,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { HeroSlider } from "@/components/hero-slider";
 import { SearchBar } from "@/components/search-bar";
 import { CompanyCard } from "@/components/company-card";
-import { companies, heroImages } from "@/lib/companies";
-import { opportunities, companyOf } from "@/lib/opportunities";
+import { fetchCompanies, fetchSectorStats, heroImages, type Company } from "@/lib/companies";
+import { opportunities } from "@/lib/opportunities";
 
 const title = "1Plastic.Asia — Danh bạ doanh nghiệp Nhựa & Cao su châu Á";
 const description =
@@ -22,6 +22,13 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  loader: async () => {
+    const [companies, stats] = await Promise.all([
+      fetchCompanies(),
+      fetchSectorStats(),
+    ]);
+    return { companies, stats };
+  },
   component: Index,
 });
 
@@ -46,7 +53,7 @@ const slides = [
   },
 ];
 
-const sectorCards = [
+const staticSectorCards = [
   { count: "126", name: "Hóa chất & nguyên liệu thô" },
   { count: "94", name: "Máy móc phụ trợ" },
   { count: "78", name: "Khuôn mẫu & thủy lực" },
@@ -54,6 +61,17 @@ const sectorCards = [
 ];
 
 function Index() {
+  const { companies, stats } = Route.useLoaderData();
+  
+  // Lấy 4 sector có nhiều công ty nhất
+  const sectorCards = stats
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 4)
+    .map(s => ({ count: s.count.toString(), name: s.name }));
+
+  // Nếu DB trống, dùng data mẫu để giao diện không bị vỡ
+  const displaySectors = sectorCards.length > 0 ? sectorCards : staticSectorCards;
+
   return (
     <div className="min-h-screen bg-brand text-ink">
       <SiteHeader />
@@ -107,7 +125,7 @@ function Index() {
               </div>
             </div>
 
-            {sectorCards.map((c) => (
+            {displaySectors.map((c) => (
               <div
                 key={c.name}
                 className="rounded-[12px] bg-frame p-5 ring-1 ring-line transition-transform hover:-translate-y-0.5 hover:ring-steel"
@@ -183,7 +201,7 @@ function Index() {
 
           <div className="grid gap-4 md:grid-cols-3">
             {opportunities.slice(0, 3).map((op) => {
-              const company = companyOf(op);
+              const company = companies.find(c => c.slug === op.companySlug);
               return (
                 <Link
                   key={op.id}
