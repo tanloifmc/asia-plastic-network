@@ -37,7 +37,7 @@ export const Route = createFileRoute("/companies/$slug")({
 
 function CompanyPage() {
   const { company } = Route.useLoaderData();
-  const [contactOpen, setContactOpen] = useState(false);
+  const [contactMode, setContactMode] = useState<"rfq" | "partnership" | null>(null);
   const related = companies.filter((c) => c.sector === company.sector && c.slug !== company.slug);
 
   return (
@@ -48,7 +48,7 @@ function CompanyPage() {
         <div className="fade-up mt-8 flex flex-wrap items-center gap-3">
           <button
             type="button"
-            onClick={() => setContactOpen(true)}
+            onClick={() => setContactMode("rfq")}
             className="rounded-[10px] bg-amber px-6 py-3 font-display text-sm font-semibold uppercase tracking-wide text-brand transition-transform hover:bg-amber/90 active:scale-[0.98]"
           >
             Gửi yêu cầu báo giá
@@ -136,10 +136,10 @@ function CompanyPage() {
             </div>
             <button
               type="button"
-              onClick={() => setContactOpen(true)}
+              onClick={() => setContactMode("partnership")}
               className="w-fit rounded-[10px] bg-amber px-6 py-3 font-display text-sm font-semibold uppercase tracking-wide text-brand transition-transform hover:bg-amber/90 active:scale-[0.98]"
             >
-              Gửi yêu cầu
+              Gửi đề xuất hợp tác
             </button>
           </div>
         </section>
@@ -168,7 +168,14 @@ function CompanyPage() {
         )}
       </main>
 
-      <ContactDialog company={company} open={contactOpen} onClose={() => setContactOpen(false)} />
+      {contactMode ? (
+        <ContactDialog
+          company={company}
+          mode={contactMode}
+          open={true}
+          onClose={() => setContactMode(null)}
+        />
+      ) : null}
       <SiteFooter />
     </div>
   );

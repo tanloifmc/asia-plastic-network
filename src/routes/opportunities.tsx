@@ -187,7 +187,12 @@ function OpportunitiesPage() {
       </main>
 
       {contact ? (
-        <ContactDialog company={contact} open={true} onClose={() => setContact(null)} />
+        <ContactDialog
+          company={contact}
+          mode="partnership"
+          open={true}
+          onClose={() => setContact(null)}
+        />
       ) : null}
 
       <SiteFooter />
