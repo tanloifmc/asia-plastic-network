@@ -1,0 +1,64 @@
+{
+  "slug": "auxitek-systems",
+  "name": "Auxitek Systems",
+  "initials": "AS",
+  "banner": "/companies/auxitek-systems/banner.jpg",
+  "logo": "/companies/auxitek-systems/logo.png",
+  "sector": "Máy móc phụ trợ",
+  "location": "Trung Quốc",
+  "city": "Ninh Ba",
+  "tagline": "Thiết bị phụ trợ dây chuyền",
+  "summary": "Máy nghiền, máy sấy, máy trộn và robot gắp sản phẩm cho nhà máy nhựa quy mô vừa và lớn.",
+  "founded": 2011,
+  "employees": "430 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/auxitek-systems/slide-1.jpg",
+      "eyebrow": "Năng lực sản xuất",
+      "title": "Auxitek Systems — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/auxitek-systems/slide-2.jpg",
+      "eyebrow": "Thiết bị phụ trợ",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "Robot gắp chu kỳ 0.8s, máy sấy điểm sương −40°C, hệ thống trộn sai số 0.3%."
+    },
+    {
+      "image": "/companies/auxitek-systems/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc."
+    }
+  ],
+  "products": [
+    { "name": "Robot gắp 3–5 trục", "detail": "Chu kỳ 0.8 s" },
+    { "name": "Máy sấy hút ẩm", "detail": "Điểm sương −40°C" },
+    { "name": "Hệ thống trộn định lượng", "detail": "Sai số 0.3%" }
+  ],
+  "capabilities": ["Lắp đặt trọn gói", "Hỗ trợ kỹ thuật từ xa", "Kho linh kiện tại Việt Nam"],
+  "email": "oversea@auxitek.example",
+  "phone": "+86 574 5555 900",
+  "website": "https://auxitek.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Thông số kỹ thuật",
+      "items": [
+        { "label": "Chu kỳ robot", "value": "0.8 giây" },
+        { "label": "Điểm sương máy sấy", "value": "−40°C" },
+        { "label": "Sai số trộn", "value": "0.3%" },
+        { "label": "Nhân sự", "value": "430 người" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Dịch vụ & hỗ trợ",
+      "items": [
+        { "name": "Lắp đặt trọn gói", "description": "Bàn giao chìa khoá trao tay" },
+        { "name": "Hỗ trợ từ xa", "description": "Kỹ thuật viên online 24/7" },
+        { "name": "Kho linh kiện VN", "description": "Giao hàng nhanh nội địa" }
+      ]
+    }
+  ]
+}

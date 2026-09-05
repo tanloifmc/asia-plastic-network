@@ -1,0 +1,63 @@
+{
+  "slug": "seonjin-hydraulics",
+  "name": "Seonjin Hydraulics",
+  "initials": "SH",
+  "banner": "/companies/seonjin-hydraulics/banner.jpg",
+  "logo": "/companies/seonjin-hydraulics/logo.png",
+  "sector": "Thủy lực & khí nén",
+  "location": "Hàn Quốc",
+  "city": "Busan",
+  "tagline": "Bơm, van và cụm thủy lực",
+  "summary": "Chuyên cụm nguồn thủy lực và van tỷ lệ cho máy ép nhựa, tối ưu tiêu thụ năng lượng và độ ổn định áp suất.",
+  "founded": 1999,
+  "employees": "210 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/seonjin-hydraulics/slide-1.jpg",
+      "eyebrow": "Năng lực sản xuất",
+      "title": "Seonjin Hydraulics — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/seonjin-hydraulics/slide-2.jpg",
+      "eyebrow": "Sản phẩm & giải pháp",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "Đáp ứng dung sai chặt, chứng nhận vật liệu và hồ sơ kỹ thuật theo yêu cầu khách hàng."
+    },
+    {
+      "image": "/companies/seonjin-hydraulics/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc."
+    }
+  ],
+  "products": [
+    { "name": "Cụm nguồn thủy lực servo", "detail": "Giảm 35% điện năng" },
+    { "name": "Van tỷ lệ", "detail": "Đáp ứng < 25 ms" },
+    { "name": "Bộ lọc & làm mát dầu", "detail": "Cho vận hành liên tục" }
+  ],
+  "capabilities": ["Thử tải tại xưởng", "Bảo hành 24 tháng", "Kho phụ tùng khu vực"],
+  "email": "sales@seonjin-hyd.example",
+  "phone": "+82 51 555 4408",
+  "website": "https://seonjin-hyd.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Thông số kỹ thuật",
+      "items": [
+        { "label": "Tiết kiệm điện năng", "value": "35%" },
+        { "label": "Thời gian phản hồi van", "value": "< 25 ms" },
+        { "label": "Bảo hành", "value": "24 tháng" },
+        { "label": "Nhân sự", "value": "210 người" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Chứng nhận & tiêu chuẩn",
+      "items": [
+        { "name": "Thử tải tại xưởng", "description": "100% sản phẩm được kiểm tra" },
+        { "name": "Kho phụ tùng", "description": "Tại khu vực Đông Nam Á" }
+      ]
+    }
+  ]
+}

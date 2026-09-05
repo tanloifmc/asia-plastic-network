@@ -1,0 +1,81 @@
+{
+  "slug": "vinh-polymer",
+  "name": "Vinh Polymer",
+  "initials": "VP",
+  "banner": "/companies/vinh-polymer/banner.jpg",
+  "logo": "/companies/vinh-polymer/logo.png",
+  "sector": "Máy móc ngành nhựa & cao su",
+  "location": "Việt Nam",
+  "city": "Hải Phòng",
+  "tagline": "Máy ép phun & dây chuyền tạo hạt",
+  "summary": "Nhà chế tạo máy ép phun và dây chuyền tạo hạt cho linh kiện kỹ thuật, phục vụ ngành ô tô, điện tử và bao bì.",
+  "founded": 2008,
+  "employees": "320 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/vinh-polymer/slide-1.jpg",
+      "eyebrow": "Năng lực sản xuất",
+      "title": "Vinh Polymer — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/vinh-polymer/slide-2.jpg",
+      "eyebrow": "Sản phẩm & vật liệu",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "Đáp ứng dung sai chặt, chứng nhận vật liệu và hồ sơ kỹ thuật theo yêu cầu khách hàng."
+    },
+    {
+      "image": "/companies/vinh-polymer/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc, hỗ trợ mẫu thử và tư vấn tại nhà máy."
+    }
+  ],
+  "products": [
+    { "name": "Máy ép phun 120–650 tấn", "detail": "Servo tiết kiệm điện, điều khiển đa trục" },
+    { "name": "Dây chuyền tạo hạt", "detail": "Công suất 300–1.200 kg/h" },
+    { "name": "Hệ thống sấy & tiếp liệu", "detail": "Tích hợp giám sát từ xa" }
+  ],
+  "capabilities": ["ISO 9001:2015", "Bảo trì tại chỗ", "Đào tạo vận hành", "Xuất khẩu 9 thị trường"],
+  "email": "sales@vinhpolymer.example",
+  "phone": "+84 225 555 018",
+  "website": "https://vinhpolymer.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Năng lực sản xuất",
+      "items": [
+        { "label": "Công suất máy ép", "value": "650 tấn" },
+        { "label": "Công suất tạo hạt", "value": "1.200 kg/h" },
+        { "label": "Nhân sự", "value": "320 người" },
+        { "label": "Thị trường xuất khẩu", "value": "9 quốc gia" },
+        { "label": "Năm thành lập", "value": "2008" },
+        { "label": "Diện tích nhà máy", "value": "12.000 m²" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Chứng nhận & tiêu chuẩn",
+      "items": [
+        { "name": "ISO 9001:2015", "description": "Quản lý chất lượng" },
+        { "name": "CE Marking", "description": "Tiêu chuẩn châu Âu" },
+        { "name": "Bảo trì tại chỗ", "description": "Đội kỹ thuật trực 24/7" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "title": "Hình ảnh nhà máy",
+      "images": [
+        "/companies/vinh-polymer/factory-1.jpg",
+        "/companies/vinh-polymer/factory-2.jpg",
+        "/companies/vinh-polymer/factory-3.jpg",
+        "/companies/vinh-polymer/factory-4.jpg"
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Câu chuyện thương hiệu",
+      "content": "Vinh Polymer được thành lập năm 2008 tại Hải Phòng với tầm nhìn trở thành nhà sản xuất máy ép phun hàng đầu Việt Nam. Qua 15 năm phát triển, chúng tôi đã xuất khẩu sang 9 thị trường quốc tế và phục vụ hơn 300 khách hàng trong và ngoài nước."
+    }
+  ]
+}

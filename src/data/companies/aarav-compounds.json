@@ -1,0 +1,64 @@
+{
+  "slug": "aarav-compounds",
+  "name": "Aarav Compounds",
+  "initials": "AC",
+  "banner": "/companies/aarav-compounds/banner.jpg",
+  "logo": "/companies/aarav-compounds/logo.png",
+  "sector": "Hóa chất & nguyên liệu thô",
+  "location": "Ấn Độ",
+  "city": "Ahmedabad",
+  "tagline": "Compound PVC & TPE",
+  "summary": "Nhà sản xuất compound PVC mềm, TPE và hợp chất chống cháy cho dây cáp, ống dẫn và linh kiện gia dụng.",
+  "founded": 2003,
+  "employees": "380 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/aarav-compounds/slide-1.jpg",
+      "eyebrow": "Năng lực sản xuất",
+      "title": "Aarav Compounds — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/aarav-compounds/slide-2.jpg",
+      "eyebrow": "Sản phẩm & vật liệu",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "PVC mềm, TPE không phthalate và hợp chất chống cháy UL94 V-0."
+    },
+    {
+      "image": "/companies/aarav-compounds/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc."
+    }
+  ],
+  "products": [
+    { "name": "Compound PVC mềm", "detail": "Độ cứng 55–95 Shore A" },
+    { "name": "TPE cho linh kiện tiếp xúc", "detail": "Không phthalate" },
+    { "name": "Hợp chất chống cháy", "detail": "UL94 V-0" }
+  ],
+  "capabilities": ["ISO 14001", "Phòng thử nghiệm cháy", "Sản lượng 3.000 tấn/tháng"],
+  "email": "export@aaravcomp.example",
+  "phone": "+91 79 5555 2277",
+  "website": "https://aaravcomp.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Năng lực sản xuất",
+      "items": [
+        { "label": "Sản lượng", "value": "3.000 tấn/tháng" },
+        { "label": "Độ cứng PVC", "value": "55–95 Shore A" },
+        { "label": "Nhân sự", "value": "380 người" },
+        { "label": "Năm thành lập", "value": "2003" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Chứng nhận & tiêu chuẩn",
+      "items": [
+        { "name": "ISO 14001", "description": "Quản lý môi trường" },
+        { "name": "UL94 V-0", "description": "Chống cháy cấp cao nhất" },
+        { "name": "Không phthalate", "description": "An toàn tiếp xúc người dùng" }
+      ]
+    }
+  ]
+}

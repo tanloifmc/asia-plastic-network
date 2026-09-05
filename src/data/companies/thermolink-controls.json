@@ -1,0 +1,63 @@
+{
+  "slug": "thermolink-controls",
+  "name": "Thermolink Controls",
+  "initials": "TC",
+  "banner": "/companies/thermolink-controls/banner.jpg",
+  "logo": "/companies/thermolink-controls/logo.png",
+  "sector": "Thiết bị gia nhiệt & điều khiển",
+  "location": "Đài Loan",
+  "city": "Đài Trung",
+  "tagline": "Gia nhiệt khuôn & bộ điều khiển nhiệt",
+  "summary": "Thiết bị gia nhiệt kênh nóng và bộ điều khiển đa vùng, tích hợp giám sát nhiệt theo thời gian thực.",
+  "founded": 2005,
+  "employees": "150 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/thermolink-controls/slide-1.jpg",
+      "eyebrow": "Năng lực sản xuất",
+      "title": "Thermolink Controls — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/thermolink-controls/slide-2.jpg",
+      "eyebrow": "Sản phẩm & giải pháp",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "Sai số ±0.5°C, tích hợp MES và giám sát theo thời gian thực."
+    },
+    {
+      "image": "/companies/thermolink-controls/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc."
+    }
+  ],
+  "products": [
+    { "name": "Bộ điều khiển 12–96 vùng", "detail": "Sai số ±0.5°C" },
+    { "name": "Hệ kênh nóng", "detail": "Cho khuôn kỹ thuật" },
+    { "name": "Cảm biến & module giám sát", "detail": "Kết nối MES" }
+  ],
+  "capabilities": ["CE", "Hỗ trợ tích hợp OEM", "Tùy biến theo khuôn"],
+  "email": "contact@thermolink.example",
+  "phone": "+886 4 5550 3311",
+  "website": "https://thermolink.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Thông số kỹ thuật",
+      "items": [
+        { "label": "Sai số nhiệt độ", "value": "±0.5°C" },
+        { "label": "Số vùng điều khiển", "value": "12–96 vùng" },
+        { "label": "Tiết kiệm điện", "value": "18–25%" },
+        { "label": "Nhân sự", "value": "150 người" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Chứng nhận & tiêu chuẩn",
+      "items": [
+        { "name": "CE Marking", "description": "Tiêu chuẩn châu Âu" },
+        { "name": "Tích hợp OEM", "description": "Tùy biến theo yêu cầu" }
+      ]
+    }
+  ]
+}

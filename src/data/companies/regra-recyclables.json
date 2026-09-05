@@ -1,0 +1,72 @@
+{
+  "slug": "regra-recyclables",
+  "name": "Regra Recyclables",
+  "initials": "RR",
+  "banner": "/companies/regra-recyclables/banner.jpg",
+  "logo": "/companies/regra-recyclables/logo.png",
+  "sector": "Tái chế",
+  "location": "Thái Lan",
+  "city": "Rayong",
+  "tagline": "Nguyên liệu tái chế rPET & rHDPE",
+  "summary": "Đơn vị tái chế quy mô công nghiệp, cung cấp hạt rPET cấp thực phẩm với chuỗi truy xuất nguồn gốc khép kín.",
+  "founded": 2014,
+  "employees": "260 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/regra-recyclables/slide-1.jpg",
+      "eyebrow": "Năng lực tái chế",
+      "title": "Regra Recyclables — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/regra-recyclables/slide-2.jpg",
+      "eyebrow": "Sản phẩm tái chế",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "Đáp ứng tiêu chuẩn food-grade, chứng nhận vật liệu và hồ sơ kỹ thuật theo yêu cầu khách hàng."
+    },
+    {
+      "image": "/companies/regra-recyclables/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc."
+    }
+  ],
+  "products": [
+    { "name": "Hạt rPET cấp thực phẩm", "detail": "IV 0.72–0.84" },
+    { "name": "Hạt rHDPE", "detail": "Cho bao bì công nghiệp" },
+    { "name": "Dịch vụ thu gom & phân loại", "detail": "Hợp đồng dài hạn" }
+  ],
+  "capabilities": ["GRS", "Truy xuất theo lô", "Kiểm định bên thứ ba", "Công suất 42.000 tấn/năm"],
+  "email": "trade@regra.example",
+  "phone": "+66 38 555 771",
+  "website": "https://regra.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Năng lực tái chế",
+      "items": [
+        { "label": "Công suất", "value": "42.000 tấn/năm" },
+        { "label": "Nhân sự", "value": "260 người" },
+        { "label": "Năm thành lập", "value": "2014" },
+        { "label": "IV rPET", "value": "0.72–0.84" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Chứng nhận & tiêu chuẩn",
+      "items": [
+        { "name": "GRS", "description": "Global Recycled Standard" },
+        { "name": "Truy xuất theo lô", "description": "Chuỗi nguồn gốc khép kín" },
+        { "name": "Food-grade", "description": "Đạt chuẩn tiếp xúc thực phẩm" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "title": "Hình ảnh nhà máy tái chế",
+      "images": [
+        "/companies/regra-recyclables/factory-1.jpg",
+        "/companies/regra-recyclables/factory-2.jpg"
+      ]
+    }
+  ]
+}

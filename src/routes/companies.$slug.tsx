@@ -4,7 +4,12 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HeroSlider } from "@/components/hero-slider";
 import { ContactDialog } from "@/components/contact-dialog";
-import { getCompany, companies } from "@/lib/companies";
+import { StatsSectionComponent } from "@/components/sections/stats-section";
+import { GallerySectionComponent } from "@/components/sections/gallery-section";
+import { CertificationsSectionComponent } from "@/components/sections/certifications-section";
+import { TextSectionComponent } from "@/components/sections/text-section";
+import { VideoSectionComponent } from "@/components/sections/video-section";
+import { getCompany, companies, type CompanySection } from "@/lib/companies";
 
 export const Route = createFileRoute("/companies/$slug")({
   loader: ({ params }) => {
@@ -15,7 +20,10 @@ export const Route = createFileRoute("/companies/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Không tìm thấy doanh nghiệp — 1Plastic.Asia" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Không tìm thấy doanh nghiệp — 1Plastic.Asia" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const { company } = loaderData;
@@ -28,6 +36,7 @@ export const Route = createFileRoute("/companies/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "website" },
+        { property: "og:image", content: company.banner },
         { name: "twitter:card", content: "summary_large_image" },
       ],
     };
@@ -35,10 +44,33 @@ export const Route = createFileRoute("/companies/$slug")({
   component: CompanyPage,
 });
 
+// ── Renderer trung tâm cho sections ────────────────────────────────────────
+// Để thêm loại section mới: thêm case ở đây + tạo component tương ứng.
+function SectionRenderer({ section }: { section: CompanySection }) {
+  switch (section.type) {
+    case "stats":
+      return <StatsSectionComponent section={section} />;
+    case "gallery":
+      return <GallerySectionComponent section={section} />;
+    case "certifications":
+      return <CertificationsSectionComponent section={section} />;
+    case "text":
+      return <TextSectionComponent section={section} />;
+    case "video":
+      return <VideoSectionComponent section={section} />;
+    default:
+      return null;
+  }
+}
+
 function CompanyPage() {
   const { company } = Route.useLoaderData();
-  const [contactMode, setContactMode] = useState<"rfq" | "partnership" | null>(null);
-  const related = companies.filter((c) => c.sector === company.sector && c.slug !== company.slug);
+  const [contactMode, setContactMode] = useState<"rfq" | "partnership" | null>(
+    null,
+  );
+  const related = companies.filter(
+    (c) => c.sector === company.sector && c.slug !== company.slug,
+  );
 
   return (
     <div className="min-h-screen bg-brand text-ink">
@@ -63,14 +95,15 @@ function CompanyPage() {
       </HeroSlider>
 
       <main className="mx-auto max-w-[1280px] px-5 py-16 sm:px-8 md:py-24">
+        {/* ── Giới thiệu & thông tin cơ bản ─────────────────────────────── */}
         <section className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-amber">
               Giới thiệu
             </p>
-            <h2 className="text-balance font-display text-3xl font-semibold leading-tight md:text-4xl">
+            <h1 className="text-balance font-display text-3xl font-semibold leading-tight md:text-4xl">
               {company.name}
-            </h2>
+            </h1>
             <p className="mt-4 max-w-[62ch] text-pretty leading-relaxed text-muted">
               {company.summary}
             </p>
@@ -87,12 +120,14 @@ function CompanyPage() {
           </div>
 
           <dl className="grid grid-cols-2 gap-3 self-start">
-            {[
-              ["Lĩnh vực", company.sector],
-              ["Địa điểm", `${company.city}, ${company.location}`],
-              ["Thành lập", String(company.founded)],
-              ["Quy mô", company.employees],
-            ].map(([k, v]) => (
+            {(
+              [
+                ["Lĩnh vực", company.sector],
+                ["Địa điểm", `${company.city}, ${company.location}`],
+                ["Thành lập", String(company.founded)],
+                ["Quy mô", company.employees],
+              ] as [string, string][]
+            ).map(([k, v]) => (
               <div key={k} className="rounded-[12px] bg-frame p-4 ring-1 ring-line">
                 <dt className="text-xs uppercase tracking-[0.16em] text-muted">{k}</dt>
                 <dd className="mt-2 text-sm font-medium leading-snug">{v}</dd>
@@ -101,6 +136,7 @@ function CompanyPage() {
           </dl>
         </section>
 
+        {/* ── Sản phẩm & dịch vụ ─────────────────────────────────────────── */}
         <section className="mt-20">
           <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-amber">
             Sản phẩm &amp; dịch vụ
@@ -114,13 +150,21 @@ function CompanyPage() {
                 key={p.name}
                 className="rounded-[14px] bg-frame p-5 ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel"
               >
-                <h3 className="font-display text-lg font-semibold leading-tight">{p.name}</h3>
+                <h3 className="font-display text-lg font-semibold leading-tight">
+                  {p.name}
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{p.detail}</p>
               </div>
             ))}
           </div>
         </section>
 
+        {/* ── Dynamic Sections (gallery, stats, certifications, text, video) ── */}
+        {company.sections?.map((section, i) => (
+          <SectionRenderer key={`${section.type}-${i}`} section={section} />
+        ))}
+
+        {/* ── Liên hệ ─────────────────────────────────────────────────────── */}
         <section className="mt-20 rounded-[14px] bg-frame p-6 ring-1 ring-line md:p-10">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
             <div>
@@ -133,6 +177,16 @@ function CompanyPage() {
               <p className="mt-3 text-sm text-muted">
                 {company.email} · {company.phone}
               </p>
+              {company.website && (
+                <a
+                  href={company.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-sm text-amber underline underline-offset-2 hover:text-amber/80"
+                >
+                  {company.website}
+                </a>
+              )}
             </div>
             <button
               type="button"
@@ -144,20 +198,23 @@ function CompanyPage() {
           </div>
         </section>
 
+        {/* ── Cùng lĩnh vực ────────────────────────────────────────────────── */}
         {related.length > 0 && (
           <section className="mt-20">
             <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-amber">
               Cùng lĩnh vực
             </p>
             <div className="mt-4 grid gap-3 md:grid-cols-3">
-              {related.map((c) => (
+              {related.slice(0, 3).map((c) => (
                 <Link
                   key={c.slug}
                   to="/companies/$slug"
                   params={{ slug: c.slug }}
                   className="rounded-[12px] bg-frame p-5 ring-1 ring-line transition-transform hover:-translate-y-0.5 hover:ring-steel"
                 >
-                  <h3 className="font-display text-lg font-semibold leading-tight">{c.name}</h3>
+                  <h3 className="font-display text-lg font-semibold leading-tight">
+                    {c.name}
+                  </h3>
                   <p className="mt-1 text-sm text-muted">
                     {c.location} · {c.tagline}
                   </p>

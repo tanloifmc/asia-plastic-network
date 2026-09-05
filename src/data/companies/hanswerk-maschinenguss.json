@@ -1,0 +1,73 @@
+{
+  "slug": "hanswerk-maschinenguss",
+  "name": "Hanswerk Maschinenguss",
+  "initials": "HM",
+  "banner": "/companies/hanswerk-maschinenguss/banner.jpg",
+  "logo": "/companies/hanswerk-maschinenguss/logo.png",
+  "sector": "Khuôn mẫu",
+  "location": "Đức",
+  "city": "Stuttgart",
+  "tagline": "Khuôn mẫu chính xác cao",
+  "summary": "Xưởng khuôn chính xác với gia công CNC 5 trục, chuyên khuôn nhiều lòng cho linh kiện y tế và ô tô.",
+  "founded": 1974,
+  "employees": "180 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/hanswerk-maschinenguss/slide-1.jpg",
+      "eyebrow": "Năng lực sản xuất",
+      "title": "Hanswerk Maschinenguss — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/hanswerk-maschinenguss/slide-2.jpg",
+      "eyebrow": "Sản phẩm & vật liệu",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "Đáp ứng dung sai chặt, chứng nhận vật liệu và hồ sơ kỹ thuật theo yêu cầu khách hàng."
+    },
+    {
+      "image": "/companies/hanswerk-maschinenguss/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc, hỗ trợ mẫu thử và tư vấn tại nhà máy."
+    }
+  ],
+  "products": [
+    { "name": "Khuôn ép nhiều lòng", "detail": "Đến 96 lòng khuôn" },
+    { "name": "Khuôn hai vật liệu", "detail": "2K / overmolding" },
+    { "name": "Dịch vụ sửa & tân trang khuôn", "detail": "Thời gian xử lý 10 ngày" }
+  ],
+  "capabilities": ["CNC 5 trục", "Đo CMM", "Thử khuôn tại xưởng", "IATF 16949"],
+  "email": "info@hanswerk.example",
+  "phone": "+49 711 555 6620",
+  "website": "https://hanswerk.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Năng lực khuôn mẫu",
+      "items": [
+        { "label": "Số lòng khuôn tối đa", "value": "96 lòng" },
+        { "label": "Năm kinh nghiệm", "value": "50+ năm" },
+        { "label": "Nhân sự", "value": "180 người" },
+        { "label": "Thời gian sửa khuôn", "value": "10 ngày" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Chứng nhận & tiêu chuẩn",
+      "items": [
+        { "name": "IATF 16949", "description": "Tiêu chuẩn ngành ô tô" },
+        { "name": "CNC 5 trục", "description": "Gia công chính xác cao" },
+        { "name": "Đo CMM", "description": "Kiểm tra toạ độ 3D" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "title": "Hình ảnh xưởng khuôn",
+      "images": [
+        "/companies/hanswerk-maschinenguss/factory-1.jpg",
+        "/companies/hanswerk-maschinenguss/factory-2.jpg",
+        "/companies/hanswerk-maschinenguss/factory-3.jpg"
+      ]
+    }
+  ]
+}

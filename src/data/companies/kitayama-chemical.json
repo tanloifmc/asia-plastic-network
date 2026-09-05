@@ -1,0 +1,73 @@
+{
+  "slug": "kitayama-chemical",
+  "name": "Kitayama Chemical",
+  "initials": "KC",
+  "banner": "/companies/kitayama-chemical/banner.jpg",
+  "logo": "/companies/kitayama-chemical/logo.png",
+  "sector": "Hóa chất & nguyên liệu thô",
+  "location": "Nhật Bản",
+  "city": "Osaka",
+  "tagline": "Nguyên liệu & phụ gia kỹ thuật",
+  "summary": "Cung cấp hạt nhựa kỹ thuật, chất ổn định nhiệt và masterbatch màu với hồ sơ kiểm định đầy đủ cho từng lô hàng.",
+  "founded": 1991,
+  "employees": "540 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/kitayama-chemical/slide-1.jpg",
+      "eyebrow": "Năng lực sản xuất",
+      "title": "Kitayama Chemical — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/kitayama-chemical/slide-2.jpg",
+      "eyebrow": "Sản phẩm & vật liệu",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "Đáp ứng dung sai chặt, chứng nhận vật liệu và hồ sơ kỹ thuật theo yêu cầu khách hàng."
+    },
+    {
+      "image": "/companies/kitayama-chemical/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc, hỗ trợ mẫu thử và tư vấn tại nhà máy."
+    }
+  ],
+  "products": [
+    { "name": "Hạt PA6 / PA66 gia cường", "detail": "Sợi thủy tinh 15–50%" },
+    { "name": "Masterbatch màu", "detail": "Phối màu theo mẫu trong 5 ngày" },
+    { "name": "Phụ gia chống UV", "detail": "Cho ứng dụng ngoài trời" }
+  ],
+  "capabilities": ["REACH", "RoHS", "Phòng lab nội bộ", "Kho trung chuyển tại Đông Nam Á"],
+  "email": "export@kitayama-chem.example",
+  "phone": "+81 6 5550 2214",
+  "website": "https://kitayama-chem.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Năng lực & quy mô",
+      "items": [
+        { "label": "Năm thành lập", "value": "1991" },
+        { "label": "Nhân sự", "value": "540 người" },
+        { "label": "Phòng lab", "value": "Nội bộ" },
+        { "label": "Thị trường", "value": "Đông Nam Á" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Chứng nhận & tiêu chuẩn",
+      "items": [
+        { "name": "REACH", "description": "Châu Âu — Kiểm soát hóa chất" },
+        { "name": "RoHS", "description": "Giới hạn chất độc hại" },
+        { "name": "Phòng lab nội bộ", "description": "Kiểm định độc lập mỗi lô" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "title": "Hình ảnh nhà máy",
+      "images": [
+        "/companies/kitayama-chemical/factory-1.jpg",
+        "/companies/kitayama-chemical/factory-2.jpg",
+        "/companies/kitayama-chemical/factory-3.jpg"
+      ]
+    }
+  ]
+}

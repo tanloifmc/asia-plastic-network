@@ -1,0 +1,72 @@
+{
+  "slug": "truong-son-extrusion",
+  "name": "Trường Sơn Extrusion",
+  "initials": "TS",
+  "banner": "/companies/truong-son-extrusion/banner.jpg",
+  "logo": "/companies/truong-son-extrusion/logo.png",
+  "sector": "Máy móc ngành nhựa & cao su",
+  "location": "Việt Nam",
+  "city": "Bình Dương",
+  "tagline": "Dây chuyền đùn ống & profile",
+  "summary": "Chế tạo dây chuyền đùn ống PVC, HDPE và profile cửa nhựa, bàn giao trọn gói kèm đào tạo vận hành.",
+  "founded": 2012,
+  "employees": "190 nhân sự",
+  "slides": [
+    {
+      "image": "/companies/truong-son-extrusion/slide-1.jpg",
+      "eyebrow": "Năng lực sản xuất",
+      "title": "Trường Sơn Extrusion — vận hành liên tục 24/7",
+      "text": "Dây chuyền đồng bộ, kiểm soát chất lượng theo lô và truy xuất nguồn gốc đầy đủ."
+    },
+    {
+      "image": "/companies/truong-son-extrusion/slide-2.jpg",
+      "eyebrow": "Sản phẩm & dây chuyền",
+      "title": "Chuẩn kỹ thuật cho từng đơn hàng",
+      "text": "Ống HDPE Ø20–630mm, profile cửa nhựa, máy cắt và nong đầu ống tự động."
+    },
+    {
+      "image": "/companies/truong-son-extrusion/slide-3.jpg",
+      "eyebrow": "Hợp tác giao thương",
+      "title": "Sẵn sàng nhận yêu cầu báo giá",
+      "text": "Đội ngũ kỹ thuật phản hồi RFQ trong 48 giờ làm việc, hỗ trợ lắp đặt và đào tạo vận hành."
+    }
+  ],
+  "products": [
+    { "name": "Dây chuyền đùn ống HDPE", "detail": "Ø20–630 mm" },
+    { "name": "Dây chuyền profile", "detail": "Đùn hai vít song song" },
+    { "name": "Máy cắt & nong đầu ống", "detail": "Tự động hoàn toàn" }
+  ],
+  "capabilities": ["Bàn giao chìa khóa trao tay", "Bảo trì 24/7", "Thiết kế theo yêu cầu"],
+  "email": "kinhdoanh@truongson-ex.example",
+  "phone": "+84 274 555 130",
+  "website": "https://truongson-ex.example",
+  "sections": [
+    {
+      "type": "stats",
+      "title": "Thông số kỹ thuật",
+      "items": [
+        { "label": "Đường kính ống", "value": "Ø20–630 mm" },
+        { "label": "Nhân sự", "value": "190 người" },
+        { "label": "Năm thành lập", "value": "2012" },
+        { "label": "Bảo trì", "value": "24/7" }
+      ]
+    },
+    {
+      "type": "certifications",
+      "title": "Dịch vụ & hỗ trợ",
+      "items": [
+        { "name": "Chìa khoá trao tay", "description": "Bàn giao toàn bộ dây chuyền" },
+        { "name": "Bảo trì 24/7", "description": "Đội kỹ thuật trực toàn thời gian" },
+        { "name": "Thiết kế theo yêu cầu", "description": "Custom theo thông số khách hàng" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "title": "Hình ảnh nhà máy",
+      "images": [
+        "/companies/truong-son-extrusion/factory-1.jpg",
+        "/companies/truong-son-extrusion/factory-2.jpg"
+      ]
+    }
+  ]
+}
