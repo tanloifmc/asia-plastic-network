@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HeroSlider } from "@/components/hero-slider";
-import { RfqDialog } from "@/components/rfq-dialog";
+import { ContactDialog } from "@/components/contact-dialog";
 import { getCompany, companies } from "@/lib/companies";
 
 export const Route = createFileRoute("/companies/$slug")({
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/companies/$slug")({
 
 function CompanyPage() {
   const { company } = Route.useLoaderData();
-  const [rfqOpen, setRfqOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const related = companies.filter((c) => c.sector === company.sector && c.slug !== company.slug);
 
   return (
@@ -48,7 +48,7 @@ function CompanyPage() {
         <div className="fade-up mt-8 flex flex-wrap items-center gap-3">
           <button
             type="button"
-            onClick={() => setRfqOpen(true)}
+            onClick={() => setContactOpen(true)}
             className="rounded-[10px] bg-amber px-6 py-3 font-display text-sm font-semibold uppercase tracking-wide text-brand transition-transform hover:bg-amber/90 active:scale-[0.98]"
           >
             Gửi yêu cầu báo giá
@@ -136,7 +136,7 @@ function CompanyPage() {
             </div>
             <button
               type="button"
-              onClick={() => setRfqOpen(true)}
+              onClick={() => setContactOpen(true)}
               className="w-fit rounded-[10px] bg-amber px-6 py-3 font-display text-sm font-semibold uppercase tracking-wide text-brand transition-transform hover:bg-amber/90 active:scale-[0.98]"
             >
               Gửi yêu cầu
@@ -168,7 +168,7 @@ function CompanyPage() {
         )}
       </main>
 
-      <RfqDialog company={company} open={rfqOpen} onClose={() => setRfqOpen(false)} />
+      <ContactDialog company={company} open={contactOpen} onClose={() => setContactOpen(false)} />
       <SiteFooter />
     </div>
   );
