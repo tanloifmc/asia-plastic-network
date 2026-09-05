@@ -7,7 +7,7 @@ import { Label } from "../../components/ui/label";
 import { Textarea } from "../../components/ui/textarea";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../components/ui/card";
-import { Loader2, Wand2 } from "lucide-react";
+import { Loader2, Wand2, Copy } from "lucide-react";
 import { sectors, locations, Company } from "../../lib/companies";
 
 export const Route = createFileRoute("/admin/companies/new")({
@@ -58,6 +58,38 @@ function NewCompanyPage() {
     } catch (err: any) {
       toast.error("Lỗi JSON: " + err.message);
     }
+  };
+
+  const copyPrompt = () => {
+    const prompt = `Tôi đang xây dựng dữ liệu cho trang web danh bạ doanh nghiệp B2B (ngành Nhựa và Cao su). 
+Hãy đóng vai một chuyên gia nghiên cứu dữ liệu doanh nghiệp xuất sắc. Nhiệm vụ của bạn là thu thập thông tin về công ty: [ĐIỀN TÊN CÔNG TY BẠN MUỐN TÌM VÀO ĐÂY]
+
+Sau đó, trả về CHỈ MỘT KHỐI JSON DUY NHẤT, tuân thủ CHÍNH XÁC 100% cấu trúc dưới đây:
+
+{
+  "name": "Tên công ty đầy đủ",
+  "initials": "Hai chữ cái viết tắt",
+  "sector": "MỘT trong các giá trị sau: 'Máy móc ngành nhựa & cao su' | 'Hóa chất & nguyên liệu thô' | 'Máy móc phụ trợ' | 'Thiết bị gia nhiệt & điều khiển' | 'Khuôn mẫu' | 'Thủy lực & khí nén' | 'Tái chế'",
+  "location": "MỘT trong các giá trị sau: 'Việt Nam' | 'Thái Lan' | 'Nhật Bản' | 'Hàn Quốc' | 'Đài Loan' | 'Trung Quốc' | 'Đức' | 'Ấn Độ'",
+  "city": "Thành phố",
+  "tagline": "Slogan ngắn",
+  "summary": "1 đoạn văn giới thiệu",
+  "founded": 2010, 
+  "employees": "VD: 50-100",
+  "email": "Email liên hệ",
+  "phone": "Số điện thoại",
+  "website": "URL website",
+  "products": [
+    { "name": "Sản phẩm 1", "detail": "Mô tả ngắn gọn" }
+  ],
+  "sections": [
+    { "type": "gallery", "title": "Hình ảnh nhà máy và chứng nhận" }
+  ]
+}
+
+KHÔNG XUẤT RA VĂN BẢN NÀO KHÁC NGOÀI JSON.`;
+    navigator.clipboard.writeText(prompt);
+    toast.success("Đã copy Prompt! Hãy dán vào ChatGPT hoặc Perplexity.");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -132,6 +164,9 @@ function NewCompanyPage() {
             <CardDescription>
               Copy đoạn JSON chuẩn do AI trả về và dán vào đây. Hệ thống sẽ tự động điền form và lưu dưới dạng <b>Bản Nháp</b>.
             </CardDescription>
+            <Button variant="outline" size="sm" onClick={copyPrompt} className="mt-2 text-xs">
+              <Copy className="w-3 h-3 mr-2" /> Copy Mẫu Lệnh (Prompt) cho AI
+            </Button>
           </CardHeader>
           <CardContent className="space-y-4">
             <Textarea 
