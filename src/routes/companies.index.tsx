@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo } from "react";
+import Fuse from "fuse.js";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SearchBar } from "@/components/search-bar";
@@ -14,6 +16,22 @@ type CompanySearch = {
   sector?: string | undefined;
   location?: string | undefined;
 };
+
+// Khởi tạo Fuse.js một lần duy nhất — không tái tạo khi re-render
+const fuse = new Fuse(companies, {
+  // Các trường tìm kiếm theo mức độ ưu tiên (weight)
+  keys: [
+    { name: "name", weight: 0.5 },        // Tên công ty — quan trọng nhất
+    { name: "tagline", weight: 0.2 },      // Slogan
+    { name: "city", weight: 0.1 },         // Thành phố
+    { name: "capabilities", weight: 0.1 }, // ISO, Chứng chỉ...
+    { name: "products.name", weight: 0.1 },// Tên sản phẩm
+  ],
+  threshold: 0.4,        // 0 = chính xác tuyệt đối, 1 = bất kỳ. 0.4 = thực tế tốt
+  includeScore: false,
+  ignoreLocation: true,  // Tìm ở bất kỳ vị trí nào trong chuỗi
+  minMatchCharLength: 2,
+});
 
 export const Route = createFileRoute("/companies/")({
   validateSearch: (search: Record<string, unknown>): CompanySearch => {
@@ -42,12 +60,18 @@ export const Route = createFileRoute("/companies/")({
 function CompaniesPage() {
   const { q, sector, location } = Route.useSearch();
 
-  const results = companies.filter((c) => {
-    const matchQ = q ? c.name.toLowerCase().includes(q.toLowerCase()) : true;
-    const matchSector = sector ? c.sector === sector : true;
-    const matchLocation = location ? c.location === location : true;
-    return matchQ && matchSector && matchLocation;
-  });
+  const results = useMemo(() => {
+    // Bước 1: Fuse.js fuzzy search theo từ khoá q
+    let pool = q ? fuse.search(q).map((r) => r.item) : companies;
+
+    // Bước 2: Lọc thêm theo sector và location (chính xác tuyệt đối)
+    if (sector) pool = pool.filter((c) => c.sector === sector);
+    if (location) pool = pool.filter((c) => c.location === location);
+
+    return pool;
+  }, [q, sector, location]);
+
+  const hasFilters = q ?? sector ?? location;
 
   return (
     <div className="min-h-screen bg-brand text-ink">
@@ -59,18 +83,20 @@ function CompaniesPage() {
           Tìm đối tác giao thương
         </h1>
         <p className="mt-3 max-w-[52ch] text-pretty text-muted">
-          Lọc theo tên doanh nghiệp, lĩnh vực hoạt động và địa điểm để tìm đúng nhà cung cấp cho
-          chuỗi sản xuất của bạn.
+          Tìm kiếm thông minh — gõ tên, lĩnh vực, sản phẩm, chứng nhận hoặc
+          địa điểm. Gõ không dấu vẫn tìm được.
         </p>
 
         <SearchBar initial={{ q, sector, location }} />
 
         <div className="mt-10 flex items-center justify-between border-b border-line/60 pb-4">
           <p className="text-sm text-muted">
-            <span className="font-display text-lg font-semibold text-ink">{results.length}</span>{" "}
+            <span className="font-display text-lg font-semibold text-ink">
+              {results.length}
+            </span>{" "}
             doanh nghiệp phù hợp
           </p>
-          {(q || sector || location) && (
+          {hasFilters && (
             <p className="truncate text-xs text-muted">
               {[q, sector, location].filter(Boolean).join(" · ")}
             </p>
@@ -85,9 +111,11 @@ function CompaniesPage() {
           </div>
         ) : (
           <div className="mt-10 rounded-[14px] bg-frame p-10 text-center ring-1 ring-line">
-            <p className="font-display text-xl font-semibold">Không tìm thấy doanh nghiệp</p>
+            <p className="font-display text-xl font-semibold">
+              Không tìm thấy doanh nghiệp
+            </p>
             <p className="mt-2 text-sm text-muted">
-              Thử bỏ bớt bộ lọc hoặc tìm theo tên ngắn gọn hơn.
+              Thử bỏ bớt bộ lọc, gõ tên ngắn gọn hơn hoặc đổi lĩnh vực.
             </p>
           </div>
         )}
