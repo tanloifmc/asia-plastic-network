@@ -18,7 +18,7 @@ function AdminDashboard() {
     setLoading(true);
     const { data, error } = await supabase
       .from("companies")
-      .select("id, slug, name, sector, city, created_at")
+      .select("id, slug, name, sector, city, status, created_at")
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -71,6 +71,7 @@ function AdminDashboard() {
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                   <tr>
                     <th className="px-6 py-3">Tên công ty</th>
+                    <th className="px-6 py-3">Trạng thái</th>
                     <th className="px-6 py-3">Slug</th>
                     <th className="px-6 py-3">Ngành nghề</th>
                     <th className="px-6 py-3">Thành phố</th>
@@ -81,6 +82,13 @@ function AdminDashboard() {
                   {companies.map((c) => (
                     <tr key={c.id} className="bg-white border-b hover:bg-gray-50">
                       <td className="px-6 py-4 font-medium text-gray-900">{c.name}</td>
+                      <td className="px-6 py-4">
+                        {c.status === "draft" ? (
+                          <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Nháp</span>
+                        ) : (
+                          <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Đã xuất bản</span>
+                        )}
+                      </td>
                       <td className="px-6 py-4">{c.slug}</td>
                       <td className="px-6 py-4">{c.sector}</td>
                       <td className="px-6 py-4">{c.city}</td>

@@ -102,6 +102,7 @@ export type Company = {
   website?: string;
   /** Mảng section tùy biến — thêm bao nhiêu section tuỳ ý */
   sections?: CompanySection[];
+  status?: "draft" | "published";
 };
 
 import { supabase } from "./supabase";
@@ -111,6 +112,7 @@ export const fetchCompanies = async (): Promise<Company[]> => {
   const { data, error } = await supabase
     .from("companies")
     .select("*")
+    .eq("status", "published")
     .order("name", { ascending: true });
   
   if (error) {
@@ -136,7 +138,7 @@ export const fetchCompanyBySlug = async (slug: string): Promise<Company | undefi
 
 export const fetchSectorStats = async () => {
   // Thay vì query từng sector phức tạp, ta fetch select("sector")
-  const { data, error } = await supabase.from("companies").select("sector");
+  const { data, error } = await supabase.from("companies").select("sector").eq("status", "published");
   if (error) return [];
   
   const stats = sectors.map((s) => ({

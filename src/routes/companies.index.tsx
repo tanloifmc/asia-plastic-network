@@ -58,9 +58,13 @@ function CompaniesPage() {
         keys: [
           { name: "name", weight: 0.5 },
           { name: "tagline", weight: 0.2 },
+          { name: "summary", weight: 0.2 },
           { name: "city", weight: 0.1 },
           { name: "capabilities", weight: 0.1 },
           { name: "products.name", weight: 0.1 },
+          { name: "products.detail", weight: 0.05 },
+          { name: "sections.title", weight: 0.05 },
+          { name: "sections.content", weight: 0.05 },
         ],
         threshold: 0.4,
         ignoreLocation: true,
