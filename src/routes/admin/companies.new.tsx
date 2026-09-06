@@ -190,7 +190,7 @@ KHÔNG XUẤT RA VĂN BẢN NÀO KHÁC NGOÀI JSON.`;
               <CardTitle>Thông tin cơ bản</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Tên công ty (*)</Label>
                   <Input id="name" name="name" value={formData.name || ""} onChange={handleChange} required />
@@ -204,7 +204,7 @@ KHÔNG XUẤT RA VĂN BẢN NÀO KHÁC NGOÀI JSON.`;
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="initials">Ký tự viết tắt</Label>
                   <Input id="initials" name="initials" value={formData.initials || ""} onChange={handleChange} maxLength={2} required />
@@ -219,7 +219,7 @@ KHÔNG XUẤT RA VĂN BẢN NÀO KHÁC NGOÀI JSON.`;
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="sector">Lĩnh vực (*)</Label>
                   <select 
@@ -260,7 +260,7 @@ KHÔNG XUẤT RA VĂN BẢN NÀO KHÁC NGOÀI JSON.`;
                 <Textarea id="summary" name="summary" rows={3} value={formData.summary || ""} onChange={handleChange} required />
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email liên hệ</Label>
                   <Input id="email" name="email" type="email" value={formData.email || ""} onChange={handleChange} required />

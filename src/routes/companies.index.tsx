@@ -20,6 +20,9 @@ type CompanySearch = {
 
 
 export const Route = createFileRoute("/companies/")({
+  headers: () => ({
+    "Cache-Control": "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",
+  }),
   validateSearch: (search: Record<string, unknown>): CompanySearch => {
     const q = search["q"];
     const sector = search["sector"];

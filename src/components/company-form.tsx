@@ -221,7 +221,7 @@ export function CompanyForm({ initialData, companyId, onSave, isPartner = false 
           <CardTitle>Thông tin cơ bản</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-           <div className="grid grid-cols-2 gap-4">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name">Tên công ty (*)</Label>
               <Input id="name" name="name" value={formData.name || ""} onChange={handleChange} required />
@@ -232,7 +232,7 @@ export function CompanyForm({ initialData, companyId, onSave, isPartner = false 
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-2">
               <Label htmlFor="sector">Lĩnh vực (*)</Label>
               <select id="sector" name="sector" className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm" value={formData.sector || sectors[0]} onChange={handleChange}>
@@ -251,7 +251,7 @@ export function CompanyForm({ initialData, companyId, onSave, isPartner = false 
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="founded">Năm thành lập</Label>
               <Input id="founded" name="founded" type="number" value={formData.founded || ""} onChange={handleChange} />
@@ -280,7 +280,7 @@ export function CompanyForm({ initialData, companyId, onSave, isPartner = false 
           <CardDescription>Thông tin này sẽ hiển thị trực tiếp để khách hàng gọi điện, gửi email.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-2">
               <Label htmlFor="phone">Số điện thoại</Label>
               <Input id="phone" name="phone" value={formData.phone || ""} onChange={handleChange} />
@@ -303,12 +303,12 @@ export function CompanyForm({ initialData, companyId, onSave, isPartner = false 
           <CardDescription>Ảnh sẽ được tự động nén để tối ưu tốc độ tải trang.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <Label>Logo</Label>
               <div className="flex items-center gap-4">
                 {formData.logo ? (
-                  <img src={formData.logo} alt="Logo" className="w-20 h-20 object-contain border rounded-md" />
+                  <img src={formData.logo} alt="Logo" loading="lazy" className="w-20 h-20 object-contain border rounded-md" />
                 ) : (
                   <div className="w-20 h-20 bg-gray-100 border rounded-md flex items-center justify-center text-xs text-gray-400">Trống</div>
                 )}
@@ -322,7 +322,7 @@ export function CompanyForm({ initialData, companyId, onSave, isPartner = false 
               <Label>Banner (Ảnh nền)</Label>
               <div className="flex items-center gap-4">
                 {formData.banner ? (
-                  <img src={formData.banner} alt="Banner" className="w-32 h-20 object-cover border rounded-md" />
+                  <img src={formData.banner} alt="Banner" loading="lazy" className="w-32 h-20 object-cover border rounded-md" />
                 ) : (
                   <div className="w-32 h-20 bg-gray-100 border rounded-md flex items-center justify-center text-xs text-gray-400">Trống</div>
                 )}
@@ -387,7 +387,7 @@ export function CompanyForm({ initialData, companyId, onSave, isPartner = false 
                   <div className="flex flex-wrap gap-4 mt-2">
                     {p.images?.map((img, imgIdx) => (
                       <div key={imgIdx} className="relative group rounded-md overflow-hidden border w-24 h-24 bg-white">
-                        <img src={img} alt="product" className="w-full h-full object-cover" />
+                        <img src={img} alt="product" loading="lazy" className="w-full h-full object-cover" />
                         <button 
                           type="button"
                           onClick={() => removeProductImage(idx, imgIdx)}
@@ -432,7 +432,7 @@ export function CompanyForm({ initialData, companyId, onSave, isPartner = false 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {sec.images?.map((img, imgIdx) => (
                     <div key={imgIdx} className="relative group rounded-md overflow-hidden border aspect-video">
-                      <img src={img} alt="gallery" className="w-full h-full object-cover" />
+                      <img src={img} alt="gallery" loading="lazy" className="w-full h-full object-cover" />
                       <button 
                         type="button"
                         onClick={() => handleDeleteGalleryImage(secIdx, imgIdx)}

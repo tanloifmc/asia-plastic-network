@@ -12,6 +12,9 @@ const description =
   "Danh bạ giao thương B2B ngành nhựa và cao su: tìm nhà sản xuất, nguyên liệu, khuôn mẫu, máy móc và đối tác tái chế theo lĩnh vực và địa điểm.";
 
 export const Route = createFileRoute("/")({
+  headers: () => ({
+    "Cache-Control": "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",
+  }),
   head: () => ({
     meta: [
       { title },

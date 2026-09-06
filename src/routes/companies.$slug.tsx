@@ -11,6 +11,9 @@ import { fetchCompanyBySlug, type CompanySection } from "@/lib/companies";
 import { Mail, Phone, Globe, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/companies/$slug")({
+  headers: () => ({
+    "Cache-Control": "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400",
+  }),
   loader: async ({ params }) => {
     const company = await fetchCompanyBySlug(params.slug);
     if (!company) {
@@ -182,7 +185,7 @@ function CompanyPage() {
                   {p.images && p.images.length > 0 && (
                     <div className="w-full h-48 bg-gray-100 flex overflow-x-auto snap-x hide-scrollbar">
                       {p.images.map((img, i) => (
-                        <img key={i} src={img} alt={`${p.name} ${i+1}`} className="h-full w-full object-cover shrink-0 snap-center" />
+                        <img key={i} src={img} alt={`${p.name} ${i+1}`} loading="lazy" className="h-full w-full object-cover shrink-0 snap-center" />
                       ))}
                     </div>
                   )}
