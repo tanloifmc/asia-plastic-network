@@ -177,12 +177,21 @@ function CompanyPage() {
               {company.products.map((p) => (
                 <div
                   key={p.name}
-                  className="rounded-[14px] bg-frame p-5 ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel"
+                  className="rounded-[14px] bg-frame overflow-hidden ring-1 ring-line transition-transform hover:-translate-y-1 hover:ring-steel flex flex-col"
                 >
-                  <h3 className="font-display text-lg font-semibold leading-tight">
-                    {p.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.detail}</p>
+                  {p.images && p.images.length > 0 && (
+                    <div className="w-full h-48 bg-gray-100 flex overflow-x-auto snap-x hide-scrollbar">
+                      {p.images.map((img, i) => (
+                        <img key={i} src={img} alt={`${p.name} ${i+1}`} className="h-full w-full object-cover shrink-0 snap-center" />
+                      ))}
+                    </div>
+                  )}
+                  <div className="p-5 flex-1 bg-white">
+                    <h3 className="font-display text-lg font-semibold leading-tight">
+                      {p.name}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted whitespace-pre-line">{p.detail}</p>
+                  </div>
                 </div>
               ))}
             </div>

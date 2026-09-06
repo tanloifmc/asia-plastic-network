@@ -95,7 +95,7 @@ export type Company = {
   founded: number;
   employees: string;
   slides: { image: string; eyebrow: string; title: string; text: string }[];
-  products: { name: string; detail: string }[];
+  products: { name: string; detail: string; images?: string[] }[];
   capabilities: string[];
   email: string;
   phone: string;
@@ -103,6 +103,7 @@ export type Company = {
   /** Mảng section tùy biến — thêm bao nhiêu section tuỳ ý */
   sections?: CompanySection[];
   status?: "draft" | "published";
+  edit_token?: string;
 };
 
 import { supabase } from "./supabase";

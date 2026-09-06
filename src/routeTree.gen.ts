@@ -21,6 +21,7 @@ import { Route as CompaniesIndexRouteImport } from './routes/companies.index'
 import { Route as CompaniesSlugRouteImport } from './routes/companies.$slug'
 import { Route as AdminCompaniesSlugRouteImport } from './routes/admin/companies.$slug'
 import { Route as AdminCompaniesNewRouteImport } from './routes/admin/companies.new'
+import { Route as PartnerEditTokenRouteImport } from './routes/partner/edit.$token'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -82,6 +83,11 @@ const AdminCompaniesNewRoute = AdminCompaniesNewRouteImport.update({
   path: '/companies/new',
   getParentRoute: () => AdminRoute,
 } as any)
+const PartnerEditTokenRoute = PartnerEditTokenRouteImport.update({
+  id: '/partner/edit/$token',
+  path: '/partner/edit/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/companies/': typeof CompaniesIndexRoute
   '/admin/companies/$slug': typeof AdminCompaniesSlugRoute
   '/admin/companies/new': typeof AdminCompaniesNewRoute
+  '/partner/edit/$token': typeof PartnerEditTokenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/companies': typeof CompaniesIndexRoute
   '/admin/companies/$slug': typeof AdminCompaniesSlugRoute
   '/admin/companies/new': typeof AdminCompaniesNewRoute
+  '/partner/edit/$token': typeof PartnerEditTokenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   '/companies/': typeof CompaniesIndexRoute
   '/admin/companies/$slug': typeof AdminCompaniesSlugRoute
   '/admin/companies/new': typeof AdminCompaniesNewRoute
+  '/partner/edit/$token': typeof PartnerEditTokenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/companies/'
     | '/admin/companies/$slug'
     | '/admin/companies/new'
+    | '/partner/edit/$token'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/companies'
     | '/admin/companies/$slug'
     | '/admin/companies/new'
+    | '/partner/edit/$token'
   id:
     | '__root__'
     | '/'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/companies/'
     | '/admin/companies/$slug'
     | '/admin/companies/new'
+    | '/partner/edit/$token'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -174,6 +186,7 @@ export interface RootRouteChildren {
   CompaniesRoute: typeof CompaniesRouteWithChildren
   OpportunitiesRoute: typeof OpportunitiesRoute
   SectorsRoute: typeof SectorsRoute
+  PartnerEditTokenRoute: typeof PartnerEditTokenRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -262,6 +275,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCompaniesNewRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/partner/edit/$token': {
+      id: '/partner/edit/$token'
+      path: '/partner/edit/$token'
+      fullPath: '/partner/edit/$token'
+      preLoaderRoute: typeof PartnerEditTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -302,6 +322,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompaniesRoute: CompaniesRouteWithChildren,
   OpportunitiesRoute: OpportunitiesRoute,
   SectorsRoute: SectorsRoute,
+  PartnerEditTokenRoute: PartnerEditTokenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
