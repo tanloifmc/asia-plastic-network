@@ -13,13 +13,29 @@ export const Route = createFileRoute("/admin/")({
 function AdminDashboard() {
   const [companies, setCompanies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const ITEMS_PER_PAGE = 20;
 
-  const fetchCompanies = async () => {
+  const fetchCompanies = async (currentPage: number) => {
     setLoading(true);
+    
+    // Đếm tổng số để tính số trang
+    const { count, error: countError } = await supabase
+      .from("companies")
+      .select("*", { count: 'exact', head: true });
+      
+    if (!countError && count !== null) setTotal(count);
+
+    // Tính range
+    const from = (currentPage - 1) * ITEMS_PER_PAGE;
+    const to = from + ITEMS_PER_PAGE - 1;
+
     const { data, error } = await supabase
       .from("companies")
       .select("id, slug, name, sector, city, status, created_at")
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: false })
+      .range(from, to);
 
     if (error) {
       toast.error("Lỗi tải dữ liệu: " + error.message);
@@ -30,8 +46,8 @@ function AdminDashboard() {
   };
 
   useEffect(() => {
-    fetchCompanies();
-  }, []);
+    fetchCompanies(page);
+  }, [page]);
 
   const handleDelete = async (id: string, name: string) => {
     if (confirm(`Bạn có chắc muốn xoá doanh nghiệp "${name}"?`)) {
@@ -40,10 +56,12 @@ function AdminDashboard() {
         toast.error("Xoá thất bại: " + error.message);
       } else {
         toast.success("Xoá thành công!");
-        fetchCompanies();
+        fetchCompanies(page);
       }
     }
   };
+  
+  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
 
   return (
     <div className="space-y-6">
@@ -58,7 +76,7 @@ function AdminDashboard() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Tổng quan ({companies.length})</CardTitle>
+          <CardTitle>Tổng quan ({total} doanh nghiệp)</CardTitle>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -106,6 +124,33 @@ function AdminDashboard() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          )}
+          
+          {/* Phân trang */}
+          {totalPages > 1 && (
+            <div className="flex justify-between items-center mt-6 pt-4 border-t">
+              <span className="text-sm text-gray-600">
+                Hiển thị trang {page} / {totalPages}
+              </span>
+              <div className="flex gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setPage(p => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                >
+                  Trang trước
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                >
+                  Trang sau
+                </Button>
+              </div>
             </div>
           )}
         </CardContent>
